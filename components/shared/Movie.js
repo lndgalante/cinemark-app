@@ -1,10 +1,15 @@
+import ProgressiveImage from 'react-progressive-image-loading'
 import { Heading, Pill, Paragraph, Strong, Text } from 'evergreen-ui'
 
 import { Tile, Poster, Overlay } from '.'
 
 const Movie = ({ cinema, index, handleSelectMovie }) => (
   <Tile className="tile" tabIndex={index} onClick={() => handleSelectMovie(cinema)}>
-    <Poster src={cinema.poster} />
+    <ProgressiveImage
+      src={cinema.poster}
+      preview={cinema.poster.includes('w300') ? cinema.poster.replace('w300', 'w200') : cinema.poster}
+      render={(src, style) => <Poster src={src} style={style} />}
+    />
     <Overlay className="overlay">
       <Heading color="white" marginBottom={6}>
         {cinema.title}
