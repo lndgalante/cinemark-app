@@ -1,5 +1,7 @@
+import React, { Component } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
+import ReactGA from 'react-ga'
 
 import { Reset } from './shared'
 
@@ -18,14 +20,25 @@ const Main = styled.main`
   justify-content: center;
 `
 
-const Layout = ({ children }) => (
-  <Wrapper>
-    <Head>
-      <title>Cinemark Estrenos</title>
-    </Head>
-    <Main>{children}</Main>
-    <Reset />
-  </Wrapper>
-)
+class Layout extends Component {
+  componentDidMount() {
+    ReactGA.initialize('UA-128371929-1')
+    ReactGA.pageview(window.location.pathname)
+  }
+
+  render() {
+    const { children } = this.props
+
+    return (
+      <Wrapper>
+        <Head>
+          <title>Cinemark Estrenos</title>
+        </Head>
+        <Main>{children}</Main>
+        <Reset />
+      </Wrapper>
+    )
+  }
+}
 
 export default Layout
