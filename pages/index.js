@@ -5,6 +5,8 @@ import fetch from 'node-fetch'
 import { Layout, Select, Movies, Modal } from '../components'
 import { AppContainer } from '../containers'
 
+import { Pane, SearchInput } from 'evergreen-ui'
+
 const Premieres = ({ data }) => {
   const cinemas = new AppContainer({ cinemas: data })
 
@@ -14,7 +16,10 @@ const Premieres = ({ data }) => {
         <Subscribe to={[AppContainer]}>
           {props => (
             <Fragment>
-              <Select {...props} />
+              <Pane display="flex">
+                <Select {...props} />
+                <SearchInput {...props} height={40} />
+              </Pane>
               <Movies {...props} />
               <Modal {...props} />
             </Fragment>

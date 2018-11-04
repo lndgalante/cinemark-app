@@ -3,11 +3,11 @@ import { Pane, SelectMenu, Button } from 'evergreen-ui'
 import { DetailView } from './shared'
 
 const Select = ({
-  state: { theaters, selectedCinemaValue, selectedCinemaLabel },
-  handleSelectCinema,
   handleLocation,
+  handleSelectCinema,
+  state: { theaters, selectedCinemaValue, selectedCinemaLabel },
 }) => (
-  <Pane marginBottom={24}>
+  <Pane marginBottom={24} marginRight={12}>
     <SelectMenu
       options={theaters}
       hasTitle={false}
