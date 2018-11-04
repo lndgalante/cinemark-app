@@ -1,6 +1,7 @@
 import Carousel from 'nuka-carousel'
 import styled from 'styled-components'
 import { Spinner } from 'evergreen-ui'
+import { withWindowSize } from 'react-fns'
 
 import { Handler, Movie } from './shared'
 
@@ -12,7 +13,7 @@ const MoviesContainer = styled.div`
   justify-content: center;
 `
 
-const Movies = ({ state: { cinemas, status }, handleSelectMovie }) => (
+const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
   <MoviesContainer>
     {status === 'loading' ? (
       <Spinner />
@@ -20,15 +21,17 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie }) => (
       <Carousel
         cellSpacing={6}
         slideWidth="200px"
+        wrapAround={width < 768}
+        cellAlign={width < 768 ? 'center' : 'left'}
         renderBottomCenterControls={null}
-        renderCenterLeftControls={({ currentSlide, previousSlide }) =>
-          currentSlide > 0 && <Handler handleClick={previousSlide} position="left" />
-        }
+        renderCenterLeftControls={({ currentSlide, previousSlide }) => {
+          if (currentSlide < 0 || width < 768) return null
+          return <Handler handleClick={previousSlide} position="left" />
+        }}
         renderCenterRightControls={props => {
           const slidesLeft = props.slideCount - props.currentSlide
-          const width = props.frameWidth - props.slideWidth * slidesLeft
-
-          if (width > 0) return null
+          const calculatedWidth = props.frameWidth - props.slideWidth * slidesLeft
+          if (calculatedWidth > 0 || width < 768) return null
           return <Handler handleClick={props.nextSlide} position="right" />
         }}
       >
@@ -40,4 +43,4 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie }) => (
   </MoviesContainer>
 )
 
-export default Movies
+export default withWindowSize(Movies)

@@ -23,6 +23,10 @@ const Reset = createGlobalStyle`
     transform-origin: center;
     transition: all 400ms ease-in-out 100ms;
   }
+
+  .📦wht-spc_nowrap  {
+    white-space: normal !important;
+  }
 `
 
 export default Reset

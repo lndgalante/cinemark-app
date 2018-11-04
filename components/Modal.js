@@ -1,7 +1,13 @@
 import { Dialog, Tablist, Tab, Pane, Table, Badge, Paragraph } from 'evergreen-ui'
 import YouTube from 'react-youtube'
+import styled from 'styled-components'
 
 import { Badges } from './shared'
+
+const StyledHead = styled(Table.Head)`
+  position: sticky;
+  top: -17px;
+`
 
 const Modal = ({
   state: { modalData, tabs, isShown, selectedMovie, selectedIndex },
@@ -35,7 +41,6 @@ const Modal = ({
         {tabs.map((tab, index) => (
           <Pane
             key={tab}
-            padding={6}
             role="tabpanel"
             id={`panel-${tab}`}
             aria-labelledby={tab}
@@ -44,17 +49,25 @@ const Modal = ({
           >
             {tab === 'Horarios' && (
               <Table>
-                <Table.Head>
-                  <Table.TextCell>Fecha</Table.TextCell>
-                  <Table.TextCell>Tipo</Table.TextCell>
+                <StyledHead>
+                  <Table.TextCell flexBasis={120} flexShrink={0} flexGrow={0}>
+                    Fecha
+                  </Table.TextCell>
+                  <Table.TextCell flexBasis={110} flexShrink={0} flexGrow={0}>
+                    Tipo
+                  </Table.TextCell>
                   <Table.TextCell>Horarios</Table.TextCell>
-                </Table.Head>
+                </StyledHead>
                 <Table.Body>
                   {modalData.map(({ date, timetable }) => {
                     return timetable.map(({ type, schedules }) => (
                       <Table.Row key={`${date}-${type}`} height="auto" paddingY={12}>
-                        <Table.TextCell>{date}</Table.TextCell>
-                        <Table.TextCell>{type}</Table.TextCell>
+                        <Table.TextCell flexBasis={120} flexShrink={0} flexGrow={0}>
+                          {date}
+                        </Table.TextCell>
+                        <Table.TextCell flexBasis={110} flexShrink={0} flexGrow={0}>
+                          {type}
+                        </Table.TextCell>
                         <Table.TextCell>
                           <Badges>
                             {schedules.map(schedule => (
@@ -69,7 +82,7 @@ const Modal = ({
               </Table>
             )}
             {tab === 'Sinopsis' && (
-              <Pane>
+              <Pane paddingX={14} paddingY={10}>
                 <Paragraph size={500}>{selectedMovie.details.description}</Paragraph>
               </Pane>
             )}

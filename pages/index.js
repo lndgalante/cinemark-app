@@ -18,7 +18,7 @@ const Premieres = ({ data }) => {
             <Fragment>
               <Pane display="flex">
                 <Select {...props} />
-                <SearchInput {...props} height={40} />
+                {/* <SearchInput {...props} height={40} placeholder="Buscar película" /> */}
               </Pane>
               <Movies {...props} />
               <Modal {...props} />

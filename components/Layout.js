@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Head from 'next/head'
 import styled from 'styled-components'
 import ReactGA from 'react-ga'
 
@@ -32,9 +31,6 @@ class Layout extends Component {
 
     return (
       <Wrapper>
-        <Head>
-          <title>Cinemark Estrenos</title>
-        </Head>
         <Main>{children}</Main>
         <Reset />
       </Wrapper>

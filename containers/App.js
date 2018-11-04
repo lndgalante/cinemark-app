@@ -24,6 +24,7 @@ class AppContainer extends Container {
     }
   }
 
+  // Select
   handleLocation = () => {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -57,6 +58,7 @@ class AppContainer extends Container {
     this.setState({ selectedCinema: value, selectedCinemaLabel: label, cinemas: cinemasFiltered, status: 'success' })
   }
 
+  // Movies
   handleSelectMovie = movie => {
     const { selectedCinema } = this.state
     if (!selectedCinema) return toaster.warning('Primero debes elegir tu cine preferido')
@@ -65,18 +67,14 @@ class AppContainer extends Container {
     this.setState({ selectedMovie: movie, modalData }, () => this.toggleDialog())
   }
 
-  handleSelectIndex = index => this.setState({ selectedIndex: index })
-
+  // Dialog
   toggleDialog = () => this.setState(({ isShown }) => ({ isShown: !isShown }))
+
+  handleSelectIndex = index => this.setState({ selectedIndex: index })
 
   handleConfirmDialog = () => {
     const { selectedMovie } = this.state
     window.open(selectedMovie.link)
-  }
-
-  handleOpenTrailer = () => {
-    const { selectedMovie } = this.state
-    window.open(selectedMovie.details.trailer)
   }
 }
 
