@@ -40,9 +40,7 @@ class Search extends Component {
 
   render() {
     const { query } = this.state
-    return (
-      <SearchInput height={40} marginTop={12} onChange={this.onChange} value={query} placeholder="Buscar película" />
-    )
+    return <SearchInput height={40} onChange={this.onChange} value={query} placeholder="Buscar película" />
   }
 }
 

@@ -37,8 +37,15 @@ class AppContainer extends Container {
 
     const { cinemasBackup } = this.state
     const cinemasFiltered = cinemasBackup.filter(({ cinemas }) => cinemas.hasOwnProperty(value))
+    const theaterTags = theaters
+      .map(({ value, address, map, rooms }) => ({
+        value,
+        values: [{ tag: address, link: map }, { tag: rooms, link: 'https://www.cinemarkhoyts.com.ar/formatos' }],
+      }))
+      .find(({ value: cinema }) => cinema === value).values
 
     this.setState({
+      theaterTags,
       selectedCinema: value,
       selectedCinemaLabel: label,
       cinemas: cinemasFiltered,
@@ -53,6 +60,7 @@ class AppContainer extends Container {
     await sleep(400)
 
     this.setState(({ cinemasBackup }) => ({
+      theaterTags: null,
       selectedCinema: '',
       selectedCinemaLabel: '',
       cinemas: cinemasBackup,
