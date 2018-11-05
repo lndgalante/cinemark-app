@@ -4,30 +4,40 @@ const theaters = [
     label: 'Cinemark Caballito',
     latitude: -34.616324,
     longitude: -58.4309907,
+    map:
+      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13134.07578153912!2d-58.428802!3d-34.616324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x294f59de3ecac7d8!2sCinemark!5e0!3m2!1sen!2sar!4v1541384019453',
   },
   {
     value: 'Cinemark Malvinas Argentinas',
     label: 'Cinemark Malvinas Argentinas',
     latitude: -34.530711,
     longitude: -58.703362,
+    map:
+      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13147.60796497787!2d-58.703362!3d-34.530711!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69c980248a79ca71!2sCinemark!5e0!3m2!1sen!2sar!4v1541384678695',
   },
   {
     value: 'Cinemark Mendoza',
     label: 'Cinemark Mendoza',
     latitude: -32.9548038,
     longitude: -68.8617119,
+    map:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3347.8562760230634!2d-68.8617118848512!3d-32.95480378091861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0a4cbabd8803%3A0xb7495f74d93cc6f4!2sCinemark.!5e0!3m2!1sen!2sar!4v1541384737760',
   },
   {
     value: 'Cinemark Neuquen',
     label: 'Cinemark Neuquén',
     latitude: -38.9420838,
     longitude: -68.0648209,
+    map:
+      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12412.986312255784!2d-68.0643183!3d-38.9411949!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd78402cb5949d8e!2sCinemark+Neuqu%C3%A9n!5e0!3m2!1sen!2sar!4v1541384838272',
   },
   {
     value: 'Cinemark Palermo',
     label: 'Cinemark Palermo',
     latitude: -34.5864418,
     longitude: -58.4103114,
+    map:
+      'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13138.802362301434!2d-58.4103114!3d-34.5864418!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x22f851827c26991e!2sCinemark!5e0!3m2!1sen!2sar!4v1541381312781',
   },
   {
     value: 'Cinemark Puerto Madero',
@@ -92,8 +102,8 @@ const theaters = [
   {
     value: 'Hoyts Nuevocentro',
     label: 'Hoyts Nuevo Centro',
-    latitude: -34.7582624,
-    longitude: -58.2766077,
+    latitude: -31.4130601,
+    longitude: -64.2043521,
   },
   {
     value: 'Hoyts Patio Olmos',

@@ -6,6 +6,7 @@
   "dependencies": {
     "evergreen-ui": "^4.3.0",
     "geolib": "^2.0.24",
+    "lodash.debounce": "^4.0.8",
     "next": "^7.0.2",
     "node-fetch": "^2.2.0",
     "nuka-carousel": "^4.4.2",

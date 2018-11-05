@@ -1,14 +1,14 @@
 import { Fragment } from 'react'
 import { Provider, Subscribe } from 'unstated'
 import fetch from 'node-fetch'
+import { orderByDistance } from 'geolib'
 
-import { Layout, Select, Movies, Modal } from '../components'
+import { Layout, Header, Movies, Modal } from '../components'
 import { AppContainer } from '../containers'
+import { theaters } from '../utils'
 
-import { Pane, SearchInput } from 'evergreen-ui'
-
-const Premieres = ({ data }) => {
-  const cinemas = new AppContainer({ cinemas: data })
+const Premieres = ({ initialData, theatersOrderedByDistance }) => {
+  const cinemas = new AppContainer({ initialData, theatersOrderedByDistance })
 
   return (
     <Provider inject={[cinemas]}>
@@ -16,10 +16,7 @@ const Premieres = ({ data }) => {
         <Subscribe to={[AppContainer]}>
           {props => (
             <Fragment>
-              <Pane display="flex">
-                <Select {...props} />
-                {/* <SearchInput {...props} height={40} placeholder="Buscar película" /> */}
-              </Pane>
+              <Header {...props} />
               <Movies {...props} />
               <Modal {...props} />
             </Fragment>
@@ -30,11 +27,21 @@ const Premieres = ({ data }) => {
   )
 }
 
-Premieres.getInitialProps = async () => {
-  const res = await fetch('https://cinemark-api.now.sh')
-  const data = await res.json()
+Premieres.getInitialProps = async ({ req }) => {
+  const ipAddress = req.connection.remoteAddress
 
-  return { data }
+  const res = await fetch('https://cinemark-api.now.sh')
+  const initialData = await res.json()
+
+  try {
+    const resIp = await fetch(`http://ip-api.com/json/${ipAddress}`)
+    const { lat, lon } = await resIp.json()
+    const ordered = orderByDistance({ lat, lon }, theaters)
+    const theatersOrderedByDistance = ordered.map(({ key }) => theaters[key])
+    return { initialData, theatersOrderedByDistance }
+  } catch (error) {
+    return { initialData }
+  }
 }
 
 export default Premieres

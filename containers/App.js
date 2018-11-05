@@ -1,5 +1,4 @@
 import { Container } from 'unstated'
-import { findNearest } from 'geolib'
 import { toaster } from 'evergreen-ui'
 
 import { sleep, theaters } from '../utils'
@@ -7,45 +6,26 @@ import { sleep, theaters } from '../utils'
 class AppContainer extends Container {
   constructor(props) {
     super()
-    const { cinemas } = props
+
+    const { initialData, theatersOrderedByDistance } = props
 
     this.state = {
-      theaters,
+      theaters: theatersOrderedByDistance || theaters,
+      query: '',
       status: '',
       isShown: false,
       modalData: null,
-      cinemas: cinemas,
-      cinemasBackup: cinemas,
+      cinemas: initialData,
+      cinemasBackup: initialData,
       selectedCinema: null,
       selectedCinemaLabel: null,
       selectedMovie: null,
       selectedIndex: 0,
-      tabs: ['Horarios', 'Sinopsis', 'Trailer'],
+      tabs: ['Horarios', 'Descripción', 'Trailer'],
     }
   }
 
   // Select
-  handleLocation = () => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        ({ coords }) => {
-          const { latitude, longitude } = coords
-          const userLocation = { latitude, longitude }
-          const cinemaLocations = theaters.map(({ latitude, longitude }) => ({ latitude, longitude }))
-          const { key } = findNearest(userLocation, cinemaLocations)
-          const closestCinema = theaters[key]
-
-          this.handleSelectCinema(closestCinema)
-        },
-        err => {
-          toaster.warning('No pudimos encontrar tu ubicación')
-        }
-      )
-    } else {
-      toaster.warning('La geolocalización no esta disponible')
-    }
-  }
-
   handleSelectCinema = async ({ value, label }) => {
     document.querySelector('.select-button').click()
 
@@ -55,7 +35,55 @@ class AppContainer extends Container {
     const { cinemasBackup } = this.state
     const cinemasFiltered = cinemasBackup.filter(({ cinemas }) => cinemas.hasOwnProperty(value))
 
-    this.setState({ selectedCinema: value, selectedCinemaLabel: label, cinemas: cinemasFiltered, status: 'success' })
+    this.setState({
+      selectedCinema: value,
+      selectedCinemaLabel: label,
+      cinemas: cinemasFiltered,
+      status: 'success',
+    })
+  }
+
+  // Search
+  handleSearching = () => this.setState({ status: 'loading' })
+
+  handleSearch = async value => {
+    const { cinemas, selectedCinema } = this.state
+
+    if (selectedCinema) {
+      const { cinemasBackup } = this.state
+
+      const cinemasFiltered = cinemas.filter(
+        ({ title, cinemas }) =>
+          cinemas.hasOwnProperty(selectedCinema) && title.toLowerCase().includes(value.toLowerCase())
+      )
+
+      if (!cinemasFiltered.length) {
+        toaster.warning(`No encontramos "${value}" en ${selectedCinema}`)
+        const cinemasFiltered = cinemasBackup.filter(({ cinemas }) => cinemas.hasOwnProperty(selectedCinema))
+
+        return this.setState({ cinemas: cinemasFiltered, status: 'failed' })
+      }
+    }
+
+    if (!value) {
+      if (selectedCinema) {
+        const { cinemasBackup } = this.state
+        const cinemasFiltered = cinemasBackup.filter(({ cinemas }) => cinemas.hasOwnProperty(selectedCinema))
+
+        return this.setState({ cinemas: cinemasFiltered, status: 'failed' })
+      }
+
+      return this.setState(({ cinemasBackup }) => ({ cinemas: cinemasBackup, status: 'failed' }))
+    }
+
+    const cinemasFiltered = cinemas.filter(({ title }) => title.toLowerCase().includes(value.toLowerCase()))
+
+    if (!cinemasFiltered.length) {
+      toaster.warning(`No encontramos "${value}"`)
+      return this.setState(({ cinemasBackup }) => ({ cinemas: cinemasBackup, status: 'failed' }))
+    }
+
+    this.setState({ cinemas: cinemasFiltered, status: 'success' })
   }
 
   // Movies

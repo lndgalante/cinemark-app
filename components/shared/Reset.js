@@ -24,7 +24,12 @@ const Reset = createGlobalStyle`
     transition: all 400ms ease-in-out 100ms;
   }
 
-  .📦wht-spc_nowrap  {
+  svg[data-icon="search"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  #panel-Horarios .📦wht-spc_nowrap  {
     white-space: normal !important;
   }
 `

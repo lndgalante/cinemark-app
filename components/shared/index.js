@@ -1,9 +1,6 @@
 // Reset
 import Reset from './Reset'
 
-// Select
-import DetailView from './DetailView'
-
 // Movies
 import Container from './Container'
 import Movie from './Movie'
@@ -13,6 +10,8 @@ import Overlay from './Overlay'
 import Handler from './Handler'
 
 // Modal
-import Badges from './Badges'
+import Schedules from './Schedules'
+import Description from './Description'
+import Trailer from './Trailer'
 
-export { Reset, DetailView, Handler, Container, Movie, Overlay, Tile, Poster, Badges }
+export { Reset, Handler, Container, Movie, Overlay, Tile, Poster, Schedules, Description, Trailer }
