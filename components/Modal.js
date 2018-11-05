@@ -13,7 +13,7 @@ const Modal = ({
     <Dialog
       isShown={isShown}
       cancelLabel="Cerrar"
-      confirmLabel="Ver película"
+      confirmLabel="Comprar entradas"
       onCloseComplete={toggleDialog}
       onConfirm={handleConfirmDialog}
       title={selectedMovie.title}

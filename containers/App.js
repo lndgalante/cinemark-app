@@ -47,19 +47,17 @@ class AppContainer extends Container {
   }
 
   handleRemoveSelectedCinema = async () => {
-    const { cinemasBackup } = this.state
-
     document.querySelector('.select-button').click()
 
     await this.setState({ status: 'loading' })
     await sleep(400)
 
-    this.setState({
+    this.setState(({ cinemasBackup }) => ({
       selectedCinema: '',
       selectedCinemaLabel: '',
       cinemas: cinemasBackup,
       status: 'success',
-    })
+    }))
   }
 
   // Search
