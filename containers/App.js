@@ -27,6 +27,9 @@ class AppContainer extends Container {
 
   // Select
   handleSelectCinema = async ({ value, label }) => {
+    const { selectedCinema } = this.state
+    if (value === selectedCinema) return toaster.notify(`${selectedCinema} se encuentra seleccionado`)
+
     document.querySelector('.select-button').click()
 
     await this.setState({ status: 'loading' })
@@ -39,6 +42,22 @@ class AppContainer extends Container {
       selectedCinema: value,
       selectedCinemaLabel: label,
       cinemas: cinemasFiltered,
+      status: 'success',
+    })
+  }
+
+  handleRemoveSelectedCinema = async () => {
+    const { cinemasBackup } = this.state
+
+    document.querySelector('.select-button').click()
+
+    await this.setState({ status: 'loading' })
+    await sleep(400)
+
+    this.setState({
+      selectedCinema: '',
+      selectedCinemaLabel: '',
+      cinemas: cinemasBackup,
       status: 'success',
     })
   }
