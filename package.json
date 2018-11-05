@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "env-hoc": "^1.2.7",
     "evergreen-ui": "^4.3.0",
     "geolib": "^2.0.24",
     "lodash.debounce": "^4.0.8",

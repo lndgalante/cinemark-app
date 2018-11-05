@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Provider, Subscribe } from 'unstated'
 import fetch from 'node-fetch'
 import { orderByDistance } from 'geolib'
+import withEnv from 'env-hoc'
 
 import { Layout, Header, Movies, Modal } from '../components'
 import { AppContainer } from '../containers'
@@ -27,8 +28,8 @@ const Premieres = ({ initialData, theatersOrderedByDistance }) => {
   )
 }
 
-Premieres.getInitialProps = async ({ req }) => {
-  const ipAddress = req.connection.remoteAddress
+Premieres.getInitialProps = async ({ env }) => {
+  const ipAddress = env.ipAddress
 
   const res = await fetch('https://cinemark-api.now.sh')
   const initialData = await res.json()
@@ -44,4 +45,4 @@ Premieres.getInitialProps = async ({ req }) => {
   }
 }
 
-export default Premieres
+export default withEnv(Premieres)
