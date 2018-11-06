@@ -15,7 +15,7 @@ class Search extends Component {
   }
 
   onChange({ target }) {
-    const { value } = target
+    const { value } = event
     const { handleSearching } = this.props
 
     handleSearching()
@@ -40,7 +40,15 @@ class Search extends Component {
 
   render() {
     const { query } = this.state
-    return <SearchInput height={40} onChange={this.onChange} value={query} placeholder="Buscar película" />
+    return (
+      <SearchInput
+        height={40}
+        onChange={this.onChange}
+        value={query}
+        placeholder="Buscar película"
+        className="search-input"
+      />
+    )
   }
 }
 

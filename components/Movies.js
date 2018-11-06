@@ -1,7 +1,7 @@
+import React, { Component } from 'react'
 import Carousel from 'nuka-carousel'
 import styled from 'styled-components'
 import { Spinner } from 'evergreen-ui'
-import { withWindowSize } from 'react-fns'
 
 import { Handler, Movie } from './shared'
 
@@ -15,6 +15,18 @@ const MoviesContainer = styled.div`
   background-color: rgba(249, 249, 251, 0.4);
 `
 
+const leftControl = ({ currentSlide, previousSlide }) => {
+  if (currentSlide === 0) return null
+  return <Handler handleClick={previousSlide} position="left" />
+}
+
+const rightControl = ({ slideCount, currentSlide, frameWidth, slideWidth, nextSlide }) => {
+  const slidesLeft = slideCount - currentSlide
+  const calculatedWidth = frameWidth - slideWidth * slidesLeft
+  if (calculatedWidth > 0) return null
+  return <Handler handleClick={nextSlide} position="right" />
+}
+
 const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
   <MoviesContainer>
     {status === 'loading' ? (
@@ -23,19 +35,9 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
       <Carousel
         cellSpacing={6}
         slideWidth="200px"
-        wrapAround={width < 768}
-        cellAlign={width < 768 ? 'center' : 'left'}
         renderBottomCenterControls={null}
-        renderCenterLeftControls={({ currentSlide, previousSlide }) => {
-          if (currentSlide === 0 || width < 768) return null
-          return <Handler handleClick={previousSlide} position="left" />
-        }}
-        renderCenterRightControls={({ slideCount, currentSlide, frameWidth, slideWidth, nextSlide }) => {
-          const slidesLeft = slideCount - currentSlide
-          const calculatedWidth = frameWidth - slideWidth * slidesLeft
-          if (calculatedWidth > 0 || width < 768) return null
-          return <Handler handleClick={nextSlide} position="right" />
-        }}
+        renderCenterLeftControls={leftControl}
+        renderCenterRightControls={rightControl}
       >
         {cinemas.map((cinema, index) => (
           <Movie key={cinema.title} cinema={cinema} index={index} handleSelectMovie={handleSelectMovie} />
@@ -45,4 +47,4 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
   </MoviesContainer>
 )
 
-export default withWindowSize(Movies)
+export default Movies
