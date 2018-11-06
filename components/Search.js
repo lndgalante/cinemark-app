@@ -15,7 +15,7 @@ class Search extends Component {
   }
 
   onChange({ target }) {
-    const { value } = event
+    const { value } = target
     const { handleSearching } = this.props
 
     handleSearching()
