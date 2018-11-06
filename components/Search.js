@@ -33,8 +33,11 @@ class Search extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.state.selectedCinema !== prevProps.state.selectedCinema) {
-      this.setState({ query: '' })
+    const { query } = this.state
+    const { handleSearch, state } = this.props
+
+    if (state.selectedCinema !== prevProps.state.selectedCinema) {
+      handleSearch(query)
     }
   }
 
