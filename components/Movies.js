@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Carousel from 'nuka-carousel'
 import styled from 'styled-components'
 import { Spinner } from 'evergreen-ui'
+import { withWindowSize } from 'react-fns'
 
 import { Handler, Movie } from './shared'
 
@@ -35,6 +36,18 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
       <Carousel
         cellSpacing={6}
         slideWidth="200px"
+        wrapAround={
+          (cinemas.length > 2 && width < 600) ||
+          (cinemas.length > 3 && width < 768) ||
+          (cinemas.length > 5 && width < 1024)
+        }
+        cellAlign={
+          (cinemas.length > 2 && width < 600) ||
+          (cinemas.length > 3 && width < 768) ||
+          (cinemas.length > 5 && width < 1024)
+            ? 'center'
+            : 'left'
+        }
         renderBottomCenterControls={null}
         renderCenterLeftControls={leftControl}
         renderCenterRightControls={rightControl}
@@ -47,4 +60,4 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
   </MoviesContainer>
 )
 
-export default Movies
+export default withWindowSize(Movies)
