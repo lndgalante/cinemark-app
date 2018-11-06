@@ -40,7 +40,6 @@ const SubWrapper = styled.div`
     grid-gap: 14px;
     grid-auto-columns: 1fr auto;
     grid-template-columns: none;
-    /* grid-template-columns: max-content 1fr; */
   }
 
   @media screen and (max-width: 768px) {
@@ -59,6 +58,15 @@ const Tags = styled.div`
 
   @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    bottom: 14px;
+    width: 100%;
+    left: 0;
+    max-width: 1280px;
+    padding: 0 25px;
   }
 `
 

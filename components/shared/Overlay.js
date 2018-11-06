@@ -12,6 +12,7 @@ const Overlay = styled.div`
   padding: 16px 12px;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.8);
+  border-radius: inherit;
 `
 
 export default Overlay

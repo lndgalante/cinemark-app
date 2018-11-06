@@ -6,7 +6,7 @@ import { withWindowSize } from 'react-fns'
 
 import { Handler, Movie } from './shared'
 
-const MoviesContainer = styled.div`
+const MoviesContainer = styled.section`
   width: 100%;
   height: 300px;
   display: flex;
@@ -49,8 +49,8 @@ const Movies = ({ state: { cinemas, status }, handleSelectMovie, width }) => (
             : 'left'
         }
         renderBottomCenterControls={null}
-        renderCenterLeftControls={leftControl}
-        renderCenterRightControls={rightControl}
+        renderCenterLeftControls={width < 1024 ? null : leftControl}
+        renderCenterRightControls={width < 1024 ? null : rightControl}
       >
         {cinemas.map((cinema, index) => (
           <Movie key={cinema.title} cinema={cinema} index={index} handleSelectMovie={handleSelectMovie} />
