@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import ReactGA from 'react-ga'
 
-import { Reset } from './shared'
+import Reset from './shared/Reset'
 
 const Wrapper = styled.div`
   width: 100vw;

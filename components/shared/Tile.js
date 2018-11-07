@@ -8,6 +8,7 @@ const Tile = styled.article`
   transition: all 400ms ease-in-out;
   position: relative;
   border-radius: 3px;
+  overflow: hidden;
 
   @media (hover: hover) {
     :hover .overlay {

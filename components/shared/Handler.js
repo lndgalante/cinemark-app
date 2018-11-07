@@ -11,19 +11,26 @@ const Wrapper = styled.div`
   opacity: 0;
   background: rgba(20, 20, 20, 0.5);
   transition: opacity 400ms ease-in-out 400ms, background 400ms ease-in-out 500ms;
+  position: absolute;
+  top: 0;
+  left: ${({ position }) => (position === 'left' ? 0 : 'auto')};
+  right: ${({ position }) => (position === 'right' ? 0 : 'auto')};
+  z-index: 10;
 
-  :hover {
-    opacity: 1;
-    background: rgba(20, 20, 20, 0.7);
+  @media (hover: hover) {
+    :hover {
+      opacity: 1;
+      background: rgba(20, 20, 20, 0.7);
 
-    svg {
-      transform: scale(2);
+      svg {
+        transform: scale(2);
+      }
     }
   }
 `
 
 const Handler = ({ handleClick, position }) => (
-  <Wrapper className="handler" onClick={handleClick}>
+  <Wrapper className="handler" onClick={handleClick} position={position}>
     <Icon icon={`chevron-${position}`} color="white" size={30} />
   </Wrapper>
 )

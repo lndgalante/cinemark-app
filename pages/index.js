@@ -1,48 +1,47 @@
 import { Fragment } from 'react'
-import { Provider, Subscribe } from 'unstated'
+import { connect } from 'react-redux'
+
 import fetch from 'node-fetch'
 import { orderByDistance } from 'geolib'
 import withEnv from 'env-hoc'
+import '@brainhubeu/react-carousel/lib/style.css'
 
-import { Layout, Header, Movies, Modal } from '../components'
-import { AppContainer } from '../containers'
-import { theaters } from '../utils'
+import Header from '../components/Header'
+import Movies from '../containers/Movies'
+import Modal from '../containers/Modal'
 
-const Premieres = ({ initialData, theatersOrderedByDistance }) => {
-  const cinemas = new AppContainer({ initialData, theatersOrderedByDistance })
+import { setCinemas } from '../store/ducks/select'
+import { setPremieres } from '../store/ducks/movies'
 
+import theaters from '../utils/theaters'
+
+const Premieres = () => {
   return (
-    <Provider inject={[cinemas]}>
-      <Layout>
-        <Subscribe to={[AppContainer]}>
-          {props => (
-            <Fragment>
-              <Header {...props} />
-              <Movies {...props} />
-              <Modal {...props} />
-            </Fragment>
-          )}
-        </Subscribe>
-      </Layout>
-    </Provider>
+    <Fragment>
+      <Header />
+      <Movies />
+      <Modal />
+    </Fragment>
   )
 }
 
-Premieres.getInitialProps = async ({ env }) => {
-  const ipAddress = env.ipAddress
+Premieres.getInitialProps = async ({ env, store }) => {
+  // const ipAddress = env.ipAddress
+  const ipAddress = '162.158.123.132'
 
   const res = await fetch('https://cinemark-api.now.sh')
   const initialData = await res.json()
+  store.dispatch(setPremieres(initialData))
 
   try {
     const resIp = await fetch(`http://ip-api.com/json/${ipAddress}`)
     const { lat, lon } = await resIp.json()
     const ordered = orderByDistance({ lat, lon }, theaters)
     const theatersOrderedByDistance = ordered.map(({ key }) => theaters[key])
-    return { initialData, theatersOrderedByDistance }
+    store.dispatch(setCinemas(theatersOrderedByDistance))
   } catch (error) {
-    return { initialData }
+    store.dispatch(setCinemas(theaters))
   }
 }
 
-export default withEnv(Premieres)
+export default connect()(withEnv(Premieres))

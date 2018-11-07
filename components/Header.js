@@ -1,7 +1,8 @@
-import { Pane, Tab } from 'evergreen-ui'
 import styled from 'styled-components'
 
-import { Select, Search } from './'
+import Select from '../containers/Select'
+import Tags from '../containers/Tags'
+import Search from '../containers/Search'
 
 const Wrapper = styled.header`
   display: grid;
@@ -50,41 +51,13 @@ const SubWrapper = styled.div`
   }
 `
 
-const Tags = styled.div`
-  display: grid;
-  grid-gap: 14px;
-  grid-auto-flow: column;
-  grid-template-columns: min-content min-content;
-
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media screen and (max-width: 768px) {
-    position: absolute;
-    bottom: 14px;
-    width: 100%;
-    left: 0;
-    max-width: 1280px;
-    padding: 0 25px;
-  }
-`
-
 const Header = props => (
   <Wrapper>
     <SubWrapper>
-      <Select {...props} />
-      {props.state.theaterTags && (
-        <Tags className="tags">
-          {props.state.theaterTags.map(({ tag, link }) => (
-            <Tab key={tag} isSelected height={40} is="a" href={link} target="_blank">
-              <span>{tag}</span>
-            </Tab>
-          ))}
-        </Tags>
-      )}
+      <Select />
+      <Tags />
     </SubWrapper>
-    <Search {...props} />
+    <Search />
   </Wrapper>
 )
 

@@ -9,13 +9,31 @@ const Reset = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  .slider:hover .handler {
+  .BrainhubCarousel {
+    position: relative;
+  }
+
+  .BrainhubCarousel:hover .handler {
     opacity: 1;
   }
 
-  .slider-control-centerleft,
-  .slider-control-centerright {
+  .BrainhubCarousel__customArrows {
     height: 100%;
+  }
+
+  .BrainhubCarousel__dots {
+    margin-top: 14px
+  }
+
+  .BrainhubCarousel__dots .BrainhubCarousel__dot.BrainhubCarousel__dot--selected:before {
+    width: 6px;
+    height: 6px;
+  }
+
+  .BrainhubCarouselItem:not(.BrainhubCarouselItem--active) img {
+    opacity: 0.9;
+    filter: blur(1px);
+    transform: scale(1.01);
   }
 
   svg[data-icon='chevron-left'],

@@ -16,11 +16,7 @@ class Search extends Component {
 
   onChange({ target }) {
     const { value } = target
-    const { handleSearching } = this.props
-
-    handleSearching()
-    this.setState({ query: value })
-    this.debouncedOnChange(value)
+    this.setState({ query: value }, () => this.debouncedOnChange(value))
   }
 
   debouncedOnChange(value) {
@@ -32,24 +28,16 @@ class Search extends Component {
     handleSearch(value)
   }
 
-  componentDidUpdate(prevProps) {
-    const { query } = this.state
-    const { handleSearch, state } = this.props
-
-    if (state.selectedCinema !== prevProps.state.selectedCinema) {
-      handleSearch(query)
-    }
-  }
-
   render() {
     const { query } = this.state
+
     return (
       <SearchInput
         height={40}
-        onChange={this.onChange}
         value={query}
-        placeholder="Buscar película"
+        onChange={this.onChange}
         className="search-input"
+        placeholder="Buscar película"
       />
     )
   }

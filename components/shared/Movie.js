@@ -1,24 +1,37 @@
-import ProgressiveImage from 'react-progressive-image-loading'
+import ProgressiveImage from 'react-progressive-image'
 import { Heading, Pill, Paragraph, Strong, Text } from 'evergreen-ui'
 
-import { Tile, Poster, Overlay } from '.'
+import Tile from './Tile'
+import Poster from './Poster'
+import Overlay from './Overlay'
 
-const Movie = ({ cinema, index, handleSelectMovie }) => (
-  <Tile className="tile" tabIndex={index} onClick={() => handleSelectMovie(cinema)}>
+const getStyle = src => {
+  return {
+    width: '200px',
+    height: '300px',
+    backgroundImage: `url(${src})`,
+    filter: 'blur(10px)',
+    transition: 'filter 500ms ease',
+  }
+}
+
+const Movie = ({ movie, handleSelectMovie }) => (
+  <Tile className="tile" onClick={() => handleSelectMovie(movie)}>
     <ProgressiveImage
-      src={cinema.poster}
-      preview={cinema.poster.includes('w300') ? cinema.poster.replace('w300', 'w200') : cinema.poster}
-      render={(src, style) => <Poster src={src} style={style} />}
-    />
+      src={movie.poster}
+      placeholder={movie.poster.includes('w300') ? movie.poster.replace('w300', 'w200') : movie.poster}
+    >
+      {(src, loading) => (loading ? <div style={getStyle(src)} /> : <Poster src={src} alt={movie.title} />)}
+    </ProgressiveImage>
     <Overlay className="overlay">
       <Heading color="white" marginBottom={6}>
-        {cinema.title}
+        {movie.title}
       </Heading>
       <Pill marginBottom={8} marginRight={4}>
-        {cinema.details.minAge}
+        {movie.details.minAge}
       </Pill>
-      {cinema.votes && <Pill marginBottom={8}>{cinema.votes}</Pill>}
-      {[...cinema.details.extras].sort((a, b) => b.key.localeCompare(a.key)).map(({ key, value }) => (
+      {movie.votes && <Pill marginBottom={8}>{movie.votes}</Pill>}
+      {[...movie.details.extras].sort((a, b) => b.key.localeCompare(a.key)).map(({ key, value }) => (
         <Paragraph key={`${key}-${value}`} size={300} marginBottom={2}>
           <Strong color="white">{key} </Strong>
           <Text color="white">{value}</Text>
