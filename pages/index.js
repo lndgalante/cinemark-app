@@ -26,8 +26,7 @@ const Premieres = () => {
 }
 
 Premieres.getInitialProps = async ({ env, store }) => {
-  // const ipAddress = env.ipAddress
-  const ipAddress = '162.158.123.132'
+  const ipAddress = env.ipAddress
 
   const res = await fetch('https://cinemark-api.now.sh')
   const initialData = await res.json()
