@@ -13,8 +13,8 @@ const Wrapper = styled.div`
   transition: opacity 400ms ease-in-out 400ms, background 400ms ease-in-out 500ms;
   position: absolute;
   top: 0;
-  left: ${({ position }) => (position === 'left' ? 0 : 'auto')};
-  right: ${({ position }) => (position === 'right' ? 0 : 'auto')};
+  left: ${({ position }) => (position === 'left' ? '0px' : 'auto')};
+  right: ${({ position }) => (position === 'right' ? '0px' : 'auto')};
   z-index: 10;
 
   @media (hover: hover) {

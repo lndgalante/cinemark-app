@@ -11,8 +11,10 @@ const Tile = styled.article`
   overflow: hidden;
 
   @media (hover: hover) {
-    :hover .overlay {
-      opacity: 1;
+    :hover {
+      .overlay {
+        opacity: 1;
+      }
     }
   }
 `

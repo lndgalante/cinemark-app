@@ -11,7 +11,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="es">
         <Head>
           <title>Cinemark Estrenos</title>
 

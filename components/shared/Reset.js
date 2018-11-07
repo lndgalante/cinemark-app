@@ -11,10 +11,15 @@ const Reset = createGlobalStyle`
 
   .BrainhubCarousel {
     position: relative;
+    width: 100%;
   }
 
   .BrainhubCarousel:hover .handler {
     opacity: 1;
+  }
+
+  .BrainhubCarousel .BrainhubCarousel__trackContainer {
+    margin: 0 -3px;
   }
 
   .BrainhubCarousel__customArrows {
@@ -22,7 +27,7 @@ const Reset = createGlobalStyle`
   }
 
   .BrainhubCarousel__dots {
-    margin-top: 14px
+    margin-top: 14px;
   }
 
   .BrainhubCarousel__dots .BrainhubCarousel__dot.BrainhubCarousel__dot--selected:before {
