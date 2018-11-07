@@ -61,6 +61,8 @@ const removeCinema = () => ({
 
 // Async actions
 const handleSelect = payload => {
+  document.title = payload.value
+
   return async dispatch => {
     dispatch(setStatusLoading())
     dispatch(setCinema(payload))
