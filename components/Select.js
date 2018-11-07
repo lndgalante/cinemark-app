@@ -1,7 +1,8 @@
-import { SelectMenu, Button } from 'evergreen-ui'
+import { SelectMenu, Button, Position } from 'evergreen-ui'
 
 const Select = ({ handleSelect, removeCinema, cinemas, selectedCinema }) => (
   <SelectMenu
+    position={Position.TOP_LEFT}
     width={220}
     height={170}
     isMultiSelect
