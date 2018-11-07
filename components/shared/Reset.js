@@ -36,7 +36,6 @@ const Reset = createGlobalStyle`
   }
 
   .BrainhubCarouselItem:not(.BrainhubCarouselItem--active) img {
-    opacity: 0.9;
     filter: blur(1px) brightness(80%);
     transform: scale(1.01);
   }
