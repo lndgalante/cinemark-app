@@ -72,4 +72,16 @@ const handleSelect = payload => {
   }
 }
 
-export { selectReducer, setCinemas, handleSelect, removeCinema }
+const handleDeselect = () => {
+  document.title = 'Cinemark Estrenos'
+
+  return async dispatch => {
+    dispatch(setStatusLoading())
+    dispatch(removeCinema())
+
+    await sleep(400)
+    dispatch(setStatusSuccess())
+  }
+}
+
+export { selectReducer, setCinemas, handleSelect, handleDeselect }
