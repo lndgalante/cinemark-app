@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dialog, Tablist, Tab, Pane } from 'evergreen-ui'
+import { Dialog, Tablist, Tab, Pane, toaster } from 'evergreen-ui'
 
 import Schedules from './shared/Schedules'
 import Description from './shared/Description'
@@ -15,12 +15,25 @@ class Modal extends Component {
 
   handleConfirmDialog = () => window.open(this.props.selectedPremiere.link)
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.modalData &&
+      this.props.modalData.error &&
+      this.props.modalData.erorr !== prevProps.modalData.error
+    ) {
+      toaster.warning('Primero debes elegir tu cine favorito')
+    }
+
+    if (this.props.modalVisibility !== prevProps.modalVisibility) {
+      this.setState({ selectedIndex: 0 })
+    }
+  }
+
   render() {
     const { tabs, selectedIndex } = this.state
     const { modalData, modalVisibility, toggleVisibility, selectedPremiere } = this.props
 
-    if (!modalData) return null
-    console.log('modalData: ', modalData)
+    if (!selectedPremiere.title) return null
 
     return (
       <Dialog
