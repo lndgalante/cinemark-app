@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   opacity: 0;
   background: rgba(20, 20, 20, 0.5);
-  transition: opacity 400ms ease-in-out 400ms, background 400ms ease-in-out 500ms;
+  transition: opacity 400ms ease-in-out 200ms, background 400ms ease-in-out 500ms;
   position: absolute;
   top: 0;
   left: ${({ position }) => (position === 'left' ? '0px' : 'auto')};
