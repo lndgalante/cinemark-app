@@ -36,8 +36,7 @@ const Reset = createGlobalStyle`
   }
 
   .BrainhubCarouselItem:not(.BrainhubCarouselItem--active) img {
-    filter: blur(1px) brightness(80%);
-    transform: scale(1.01);
+    filter: brightness(80%);
   }
 
   svg[data-icon='chevron-left'],

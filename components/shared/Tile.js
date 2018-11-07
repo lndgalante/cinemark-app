@@ -10,7 +10,7 @@ const Tile = styled.article`
   border-radius: 3px;
   overflow: hidden;
 
-  @media (hover: hover) {
+  @media (hover) {
     :hover {
       .overlay {
         opacity: 1;
