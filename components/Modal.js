@@ -19,6 +19,8 @@ class Modal extends Component {
     if (
       this.props.modalData &&
       this.props.modalData.error &&
+      prevProps.modalData &&
+      prevProps.modalData.error &&
       this.props.modalData.erorr !== prevProps.modalData.error
     ) {
       toaster.warning('Primero debes elegir tu cine favorito')
