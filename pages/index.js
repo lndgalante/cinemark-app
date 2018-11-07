@@ -9,6 +9,7 @@ import '@brainhubeu/react-carousel/lib/style.css'
 import Header from '../components/Header'
 import Movies from '../containers/Movies'
 import Modal from '../containers/Modal'
+import Meta from '../components/Meta'
 
 import { setCinemas } from '../store/ducks/select'
 import { setPremieres } from '../store/ducks/movies'
@@ -18,6 +19,7 @@ import theaters from '../utils/theaters'
 const Premieres = () => {
   return (
     <Fragment>
+      <Meta />
       <Header />
       <Movies />
       <Modal />
