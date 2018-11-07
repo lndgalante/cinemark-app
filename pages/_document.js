@@ -9,18 +9,10 @@ class MyDocument extends Document {
       sheet.collectStyles(<App {...props} />)
     )
     const styleTags = sheet.getStyleElement()
-    return { ...page, styleTags }
-  }
 
-  static getInitialProps({ renderPage }) {
-    const page = renderPage()
     const { css, hydrationScript } = extractStyles()
 
-    return {
-      ...page,
-      css,
-      hydrationScript,
-    }
+    return { ...page, css, hydrationScript, styleTags }
   }
 
   render() {
@@ -33,8 +25,8 @@ class MyDocument extends Document {
           <style dangerouslySetInnerHTML={{ __html: css }} />
         </Head>
         <body>
-          <Main />
           {hydrationScript}
+          <Main />
           <NextScript />
         </body>
       </html>
