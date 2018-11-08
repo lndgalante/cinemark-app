@@ -1,6 +1,6 @@
 import { SelectMenu, Button } from 'evergreen-ui'
 
-const Select = ({ handleSelect, removeCinema, cinemas, selectedCinema }) => (
+const Select = ({ handleSelect, handleDeselect, cinemas, selectedCinema }) => (
   <SelectMenu
     width={220}
     height={170}
@@ -8,7 +8,7 @@ const Select = ({ handleSelect, removeCinema, cinemas, selectedCinema }) => (
     hasTitle={false}
     options={cinemas}
     onSelect={handleSelect}
-    onDeselect={removeCinema}
+    onDeselect={handleDeselect}
     selected={selectedCinema.value}
   >
     <Button height={40}>{selectedCinema.label || 'Elegí tu cine'}</Button>

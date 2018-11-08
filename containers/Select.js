@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import Select from '../components/Select'
-import { handleSelect, removeCinema } from '../store/ducks/select'
+import { handleSelect, handleDeselect } from '../store/ducks/select'
 
 const mapStateToProps = ({ select }) => ({
   cinemas: select.cinemas,
@@ -10,7 +10,7 @@ const mapStateToProps = ({ select }) => ({
 
 const mapDispatchToProps = {
   handleSelect,
-  removeCinema,
+  handleDeselect,
 }
 
 export default connect(
