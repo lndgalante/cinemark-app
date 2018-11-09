@@ -65,7 +65,7 @@ const setDefaultPremiereShows = payload => ({
 
 // Async actions
 const getPremiereInfo = async (movieId, cinemaId) => {
-  const res = await fetch(`https://cinemark-billboard-api.now.sh/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
+  const res = await fetch(`https://cinemark-wrapper-api.now.sh/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
   const data = await res.json()
 
   return data

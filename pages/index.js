@@ -34,8 +34,8 @@ Premieres.getInitialProps = async ({ env, store }) => {
   try {
     const urls = [
       `http://ip-api.com/json/${ipAddress}`,
-      'https://cinemark-billboard-api.now.sh/cinemas',
-      'https://cinemark-billboard-api.now.sh/movies',
+      'https://cinemark-wrapper-api.now.sh/cinemas',
+      'https://cinemark-wrapper-api.now.sh/movies',
     ]
     const [ip, cinemas, premieres] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
 
