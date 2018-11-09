@@ -60,7 +60,7 @@ class Slider extends Component {
           }}
         >
           {movies.map(movie => (
-            <Movie key={movie.title} movie={movie} handleSelectMovie={handleSelectMovie} />
+            <Movie key={movie.name} movie={movie} handleSelectMovie={handleSelectMovie} />
           ))}
         </Carousel>
         {movies.length > 1 && <Dots value={value} onChange={this.onChange} number={movies.length} />}

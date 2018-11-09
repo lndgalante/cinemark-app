@@ -9,13 +9,16 @@ const Reset = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  /* Carousel */
   .BrainhubCarousel {
     position: relative;
     width: 100%;
   }
 
-  .BrainhubCarousel:hover .handler {
-    opacity: 1;
+  @media screen and (min-width: 768px) {
+    .BrainhubCarousel:hover .handler {
+      opacity: 1;
+    }
   }
 
   .BrainhubCarousel .BrainhubCarousel__trackContainer {
@@ -35,23 +38,20 @@ const Reset = createGlobalStyle`
     height: 6px;
   }
 
-  .BrainhubCarouselItem:not(.BrainhubCarouselItem--active) img {
-    filter: brightness(80%);
-  }
-
+  /* Carousel Handlers */
   svg[data-icon='chevron-left'],
   svg[data-icon='chevron-right'] {
     transform-origin: center;
     transition: all 400ms ease-in-out 100ms;
   }
 
-  svg[data-icon="search"] {
-    width: 16px;
-    height: 16px;
+  /* Modal styles */
+  #panel-Funciones .📦wht-spc_nowrap  {
+    white-space: normal !important;
   }
 
-  #panel-Horarios .📦wht-spc_nowrap  {
-    white-space: normal !important;
+  .📦mb_12vmin[role='dialog'] {
+    padding-bottom: 20px;
   }
 `
 

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   right: ${({ position }) => (position === 'right' ? '0px' : 'auto')};
   z-index: 10;
 
-  @media (hover) {
+  @media screen and (min-width: 768px) {
     :hover {
       opacity: 1;
       background: rgba(20, 20, 20, 0.7);

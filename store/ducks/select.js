@@ -4,7 +4,7 @@ import { setStatusLoading, setStatusSuccess } from './status'
 // Initial State
 const initialState = {
   cinemas: null,
-  selectedCinema: { value: '', label: '', tags: null },
+  selectedCinema: { value: '', label: '' },
 }
 
 // Action Types
