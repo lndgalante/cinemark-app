@@ -18,7 +18,7 @@ const Schedules = ({ shows }) => (
       </Table.TextCell>
       <Table.TextCell>Idioma</Table.TextCell>
       <Table.TextCell>Horarios</Table.TextCell>
-      <Table.TextCell flexBasis={50} flexShrink={0} flexGrow={0}>
+      <Table.TextCell flexBasis={60} flexShrink={0} flexGrow={0}>
         Link
       </Table.TextCell>
     </StyledHead>
@@ -36,9 +36,9 @@ const Schedules = ({ shows }) => (
             <Table.TextCell>
               <Badge>{time}</Badge>
             </Table.TextCell>
-            <Table.TextCell flexBasis={50} flexShrink={0} flexGrow={0}>
+            <Table.TextCell flexBasis={60} flexShrink={0} flexGrow={0}>
               <Link href={link} target="_blank">
-                <Icon icon="shopping-cart" color="muted" size={16} title="Comprar entrada" />
+                <Icon icon="shopping-cart" color="muted" size={14} title="Comprar entrada" />
               </Link>
             </Table.TextCell>
           </Table.Row>

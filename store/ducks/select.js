@@ -79,7 +79,7 @@ const handleDeselect = () => {
     dispatch(setStatusLoading())
     dispatch(removeCinema())
 
-    await sleep(400)
+    await sleep(1000)
     dispatch(setStatusSuccess())
   }
 }

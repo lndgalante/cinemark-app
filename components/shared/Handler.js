@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   top: 0;
   left: ${({ position }) => (position === 'left' ? '0px' : 'auto')};
   right: ${({ position }) => (position === 'right' ? '0px' : 'auto')};
-  z-index: 10;
+  z-index: 9;
 
   @media screen and (min-width: 768px) {
     :hover {

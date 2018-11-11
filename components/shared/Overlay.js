@@ -9,7 +9,7 @@ const Overlay = styled.div`
   width: 100%;
   opacity: 0;
   transition: inherit;
-  padding: 16px 12px;
+  padding: 14px 12px;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: inherit;

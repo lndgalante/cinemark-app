@@ -25,7 +25,7 @@ const moviesSelector = createSelector(
       const moviesFilteredByCinemaAndQuery = filterMoviesByCinemaAndQuery(movies, selectedCinema, query)
 
       if (!moviesFilteredByCinemaAndQuery.length) {
-        toaster.warning(`No encontramos "${query}" en ${selectedCinema}`)
+        toaster.warning(`No encontramos "${query}"`)
         return filterMoviesByCinema(movies, selectedCinema)
       }
 

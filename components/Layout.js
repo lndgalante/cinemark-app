@@ -14,10 +14,10 @@ const Main = styled.main`
   height: 100%;
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 21px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 25px;
 `
 
 class Layout extends Component {

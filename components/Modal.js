@@ -14,9 +14,8 @@ class Modal extends Component {
   handleSelectIndex = index => this.setState({ selectedIndex: index })
 
   componentDidUpdate(prevProps) {
-    if (this.props.modalVisibility !== prevProps.modalVisibility) {
-      this.setState({ selectedIndex: 0 })
-    }
+    const { modalVisibility } = this.props
+    if (modalVisibility !== prevProps.modalVisibility) this.setState({ selectedIndex: 0 })
   }
 
   render() {
@@ -31,7 +30,7 @@ class Modal extends Component {
         title={selectedPremiere.name}
         onCloseComplete={toggleVisibility}
       >
-        <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
+        <Tablist marginBottom={14}>
           {tabs.map((tab, index) => (
             <Tab
               id={tab}

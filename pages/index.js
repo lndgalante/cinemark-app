@@ -28,8 +28,8 @@ const Premieres = () => {
 }
 
 Premieres.getInitialProps = async ({ env, store }) => {
-  // const ipAddress = env.ipAddress
-  const ipAddress = '181.29.166.97'
+  const ipAddress = env.ipAddress
+  // const ipAddress = '181.29.166.97'
 
   try {
     const urls = [`http://ip-api.com/json/${ipAddress}`, 'https://cinemark-wrapper-api.now.sh/movies']

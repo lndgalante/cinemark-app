@@ -1,7 +1,7 @@
 import { Pane, Paragraph, Strong, Text } from 'evergreen-ui'
 
 const Description = ({ movie }) => (
-  <Pane paddingX={14} paddingY={10}>
+  <Pane paddingX={14} paddingY={12}>
     <Paragraph marginBottom={4}>{movie.description}</Paragraph>
 
     <Paragraph marginBottom={2}>

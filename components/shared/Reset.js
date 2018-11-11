@@ -13,6 +13,7 @@ const Reset = createGlobalStyle`
   .BrainhubCarousel {
     position: relative;
     width: 100%;
+    height: 300px;
   }
 
   @media screen and (min-width: 768px) {
@@ -51,7 +52,7 @@ const Reset = createGlobalStyle`
   }
 
   .📦mb_12vmin[role='dialog'] {
-    padding-bottom: 20px;
+    padding-bottom: 14px;
   }
 `
 

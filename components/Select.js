@@ -1,6 +1,6 @@
 import { SelectMenu, Button } from 'evergreen-ui'
 
-const Select = ({ handleSelect, handleDeselect, cinemas, selectedCinema }) => (
+const Select = ({ cinemas, selectedCinema, handleSelect, handleDeselect }) => (
   <SelectMenu
     width={220}
     height={170}
