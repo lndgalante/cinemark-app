@@ -4,6 +4,7 @@ import { toaster } from 'evergreen-ui'
 const getPremieres = state => state.movies.premieres
 const getSelectedCinema = state => state.select.selectedCinema.cinemaId
 const getSearchQuery = state => state.query
+const getLanguages = state => state.languages
 
 const filterMoviesByCinema = (movies, cinema) => movies.filter(({ inCinemas }) => inCinemas.includes(cinema))
 const filterMoviesByQuery = (movies, query) =>
@@ -12,13 +13,18 @@ const filterMoviesByCinemaAndQuery = (movies, cinema, query) =>
   movies.filter(({ name, inCinemas }) => inCinemas.includes(cinema) && name.toLowerCase().includes(query.toLowerCase()))
 
 const moviesSelector = createSelector(
-  [getPremieres, getSelectedCinema, getSearchQuery],
-  (movies, selectedCinema, query) => {
+  [getPremieres, getSelectedCinema, getSearchQuery, getLanguages],
+  (movies, selectedCinema, query, languages) => {
+    const languagesChecked = Object.entries(languages)
+      .filter(([_, checked]) => Boolean(checked))
+      .map(([language]) => language)
+
     // There's no filter selected
-    if (!query && !selectedCinema) return movies
+    if (!query && !selectedCinema) return movies.filter(({ language }) => languagesChecked.includes(language))
 
     // There's no query but there's a cinema selected
-    if (!query && selectedCinema) return filterMoviesByCinema(movies, selectedCinema)
+    if (!query && selectedCinema)
+      return filterMoviesByCinema(movies, selectedCinema).filter(({ language }) => languagesChecked.includes(language))
 
     // There's a query and a cinema selected
     if (query && selectedCinema) {
@@ -26,7 +32,9 @@ const moviesSelector = createSelector(
 
       if (!moviesFilteredByCinemaAndQuery.length) {
         toaster.warning(`No encontramos "${query}"`)
-        return filterMoviesByCinema(movies, selectedCinema)
+        return filterMoviesByCinema(movies, selectedCinema).filter(({ language }) =>
+          languagesChecked.includes(language)
+        )
       }
 
       return moviesFilteredByCinemaAndQuery
@@ -34,7 +42,9 @@ const moviesSelector = createSelector(
 
     // There's a query but no cinema selected
     if (query && !selectedCinema) {
-      const moviesFilteredByQuery = filterMoviesByQuery(movies, query)
+      const moviesFilteredByQuery = filterMoviesByQuery(movies, query).filter(({ language }) =>
+        languagesChecked.includes(language)
+      )
 
       if (!moviesFilteredByQuery.length) {
         toaster.warning(`No encontramos "${query}"`)

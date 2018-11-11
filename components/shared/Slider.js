@@ -16,12 +16,12 @@ class Slider extends Component {
     return (
       <div>
         <Carousel
-          infinite
           centered
           offset={6}
           value={value}
           itemWidth={206}
           onChange={this.onChange}
+          infinite={movies.length >= 3}
           addArrowClickHandler
           arrowLeft={movies.length > 1 && <Handler position="left" />}
           arrowRight={movies.length > 1 && <Handler position="right" />}
