@@ -32,21 +32,17 @@ Premieres.getInitialProps = async ({ env, store }) => {
   const ipAddress = '181.29.166.97'
 
   try {
-    const urls = [
-      `http://ip-api.com/json/${ipAddress}`,
-      'https://cinemark-wrapper-api.now.sh/cinemas',
-      'https://cinemark-wrapper-api.now.sh/movies',
-    ]
-    const [ip, cinemas, premieres] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
+    const urls = [`http://ip-api.com/json/${ipAddress}`, 'https://cinemark-wrapper-api.now.sh/movies']
+    const [ip, premieres] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
 
-    const { lat, lon } = await ip
+    const { lat, lon } = ip
     const parsedCinemas = cinemas.map(({ name, ...restProps }) => ({ value: name, label: name, ...restProps }))
     const cinemasOrderedByDistance = orderByDistance({ lat, lon }, parsedCinemas).map(({ key }) => parsedCinemas[key])
 
     store.dispatch(setCinemas(cinemasOrderedByDistance))
     store.dispatch(setPremieres(premieres))
   } catch (error) {
-    const premieresRes = await fetch('https://cinemark-billboard-api.now.sh/movies')
+    const premieresRes = await fetch('https://cinemark-wrapper-api.now.sh/movies')
     const premieres = await premieresRes.json()
 
     store.dispatch(setCinemas(cinemas))

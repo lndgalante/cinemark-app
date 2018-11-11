@@ -22,25 +22,11 @@ class Movies extends Component {
   render() {
     const { status, movies, setPremiere } = this.props
 
-    if (status === 'loading') {
-      return (
-        <MoviesContainer>
-          <SpinnerContainer>
-            <Spinner />
-          </SpinnerContainer>
-        </MoviesContainer>
-      )
-    }
-
-    if (movies && movies.length) {
-      return (
-        <MoviesContainer>
-          <Slider movies={movies} handleSelectMovie={setPremiere} />
-        </MoviesContainer>
-      )
-    }
-
-    return <MoviesContainer />
+    return (
+      <MoviesContainer>
+        <Slider movies={movies} status={status} handleSelectMovie={setPremiere} />
+      </MoviesContainer>
+    )
   }
 }
 

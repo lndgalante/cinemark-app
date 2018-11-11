@@ -3,6 +3,7 @@ import Carousel, { Dots } from '@brainhubeu/react-carousel'
 
 import Handler from './Handler'
 import Movie from './Movie'
+import Loader from './Loader'
 
 class Slider extends Component {
   state = {
@@ -13,7 +14,7 @@ class Slider extends Component {
 
   render() {
     const { value } = this.state
-    const { movies, handleSelectMovie } = this.props
+    const { movies, status, handleSelectMovie } = this.props
 
     return (
       <div>
@@ -22,6 +23,7 @@ class Slider extends Component {
           centered
           offset={6}
           value={value}
+          itemWidth={206}
           onChange={this.onChange}
           addArrowClickHandler
           arrowLeft={movies.length > 1 && <Handler position="left" />}
@@ -59,9 +61,9 @@ class Slider extends Component {
             },
           }}
         >
-          {movies.map(movie => (
-            <Movie key={movie.name} movie={movie} handleSelectMovie={handleSelectMovie} />
-          ))}
+          {status === 'loading'
+            ? Array.from({ length: 20 }).map((_, index) => <Loader key={index} />)
+            : movies.map(movie => <Movie key={movie.name} movie={movie} handleSelectMovie={handleSelectMovie} />)}
         </Carousel>
         {movies.length > 1 && <Dots value={value} onChange={this.onChange} number={movies.length} />}
       </div>
