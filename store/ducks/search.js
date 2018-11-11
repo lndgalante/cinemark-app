@@ -34,7 +34,7 @@ const handleSearch = payload => {
     dispatch(setStatusLoading())
     dispatch(setQuery(payload))
 
-    await sleep(400)
+    await sleep(1000)
     dispatch(setStatusSuccess())
   }
 }

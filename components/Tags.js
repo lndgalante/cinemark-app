@@ -9,15 +9,12 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr 1fr;
-  }
-
-  @media screen and (max-width: 1024px) {
     position: absolute;
     bottom: 14px;
     width: 100%;
     left: 0;
     max-width: 1280px;
-    padding: 0 25px;
+    padding: 0 21px;
   }
 `
 

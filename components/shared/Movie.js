@@ -25,18 +25,34 @@ const Movie = ({ movie, handleSelectMovie }) => (
     </ProgressiveImage>
     <Overlay className="overlay">
       <Heading color="white" marginBottom={6}>
-        {movie.title}
+        {movie.name}
       </Heading>
+
       <Pill marginBottom={8} marginRight={4}>
-        {movie.details.minAge}
+        {movie.minAge}
       </Pill>
-      {movie.votes && <Pill marginBottom={8}>{movie.votes}</Pill>}
-      {[...movie.details.extras].sort((a, b) => b.key.localeCompare(a.key)).map(({ key, value }) => (
-        <Paragraph key={`${key}-${value}`} size={300} marginBottom={2}>
-          <Strong color="white">{key} </Strong>
-          <Text color="white">{value}</Text>
-        </Paragraph>
-      ))}
+
+      {movie.votes ? <Pill marginBottom={8}>{movie.votes}</Pill> : null}
+
+      <Paragraph size={300} marginBottom={2}>
+        <Strong color="white">Género</Strong>
+        <Text color="white"> {movie.category}</Text>
+      </Paragraph>
+
+      <Paragraph size={300} marginBottom={2}>
+        <Strong color="white">Duración</Strong>
+        <Text color="white"> {movie.duration}</Text>
+      </Paragraph>
+
+      <Paragraph size={300} marginBottom={2}>
+        <Strong color="white">Director{movie.cast.directors.length > 1 ? 'es ' : ' '}</Strong>
+        <Text color="white">{movie.cast.directors.join(', ')}</Text>
+      </Paragraph>
+
+      <Paragraph size={300} marginBottom={2}>
+        <Strong color="white">Actor{movie.cast.actors.length > 1 ? 'es ' : ' '} </Strong>
+        <Text color="white">{movie.cast.actors.join(', ')}</Text>
+      </Paragraph>
     </Overlay>
   </Tile>
 )

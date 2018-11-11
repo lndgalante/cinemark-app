@@ -7,7 +7,7 @@ const types = {
 }
 
 // Reducer
-const modalReducer = (state = initialState, { type, payload }) => {
+const modalReducer = (state = initialState, { type }) => {
   switch (type) {
     case types.toggleVisibility: {
       return !state

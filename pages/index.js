@@ -14,7 +14,7 @@ import Meta from '../components/Meta'
 import { setCinemas } from '../store/ducks/select'
 import { setPremieres } from '../store/ducks/movies'
 
-import theaters from '../utils/theaters'
+import cinemas from '../utils/cinemas'
 
 const Premieres = () => {
   return (
@@ -29,19 +29,24 @@ const Premieres = () => {
 
 Premieres.getInitialProps = async ({ env, store }) => {
   const ipAddress = env.ipAddress
-
-  const res = await fetch('https://cinemark-api.now.sh')
-  const initialData = await res.json()
-  store.dispatch(setPremieres(initialData))
+  // const ipAddress = '181.29.166.97'
 
   try {
-    const resIp = await fetch(`http://ip-api.com/json/${ipAddress}`)
-    const { lat, lon } = await resIp.json()
-    const ordered = orderByDistance({ lat, lon }, theaters)
-    const theatersOrderedByDistance = ordered.map(({ key }) => theaters[key])
-    store.dispatch(setCinemas(theatersOrderedByDistance))
+    const urls = [`http://ip-api.com/json/${ipAddress}`, 'https://cinemark-wrapper-api.now.sh/movies']
+    const [ip, premieres] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
+
+    const { lat, lon } = ip
+    const parsedCinemas = cinemas.map(({ name, ...restProps }) => ({ value: name, label: name, ...restProps }))
+    const cinemasOrderedByDistance = orderByDistance({ lat, lon }, parsedCinemas).map(({ key }) => parsedCinemas[key])
+
+    store.dispatch(setCinemas(cinemasOrderedByDistance))
+    store.dispatch(setPremieres(premieres))
   } catch (error) {
-    store.dispatch(setCinemas(theaters))
+    const premieresRes = await fetch('https://cinemark-wrapper-api.now.sh/movies')
+    const premieres = await premieresRes.json()
+
+    store.dispatch(setCinemas(cinemas))
+    store.dispatch(setPremieres(premieres))
   }
 }
 

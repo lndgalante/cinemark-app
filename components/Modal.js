@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dialog, Tablist, Tab, Pane, toaster } from 'evergreen-ui'
+import { Dialog, Tablist, Tab, Pane } from 'evergreen-ui'
 
 import Schedules from './shared/Schedules'
 import Description from './shared/Description'
@@ -8,45 +8,29 @@ import Trailer from './shared/Trailer'
 class Modal extends Component {
   state = {
     selectedIndex: 0,
-    tabs: ['Horarios', 'Descripción', 'Trailer'],
+    tabs: ['Funciones', 'Descripción', 'Trailer'],
   }
 
   handleSelectIndex = index => this.setState({ selectedIndex: index })
 
-  handleConfirmDialog = () => window.open(this.props.selectedPremiere.link)
-
   componentDidUpdate(prevProps) {
-    if (
-      this.props.modalData &&
-      this.props.modalData.error &&
-      prevProps.modalData &&
-      prevProps.modalData.error &&
-      this.props.modalData.erorr !== prevProps.modalData.error
-    ) {
-      toaster.warning('Primero debes elegir tu cine favorito')
-    }
-
-    if (this.props.modalVisibility !== prevProps.modalVisibility) {
-      this.setState({ selectedIndex: 0 })
-    }
+    const { modalVisibility } = this.props
+    if (modalVisibility !== prevProps.modalVisibility) this.setState({ selectedIndex: 0 })
   }
 
   render() {
     const { tabs, selectedIndex } = this.state
-    const { modalData, modalVisibility, toggleVisibility, selectedPremiere } = this.props
-
-    if (!selectedPremiere.title) return null
+    const { modalVisibility, toggleVisibility, selectedPremiere, selectedPremiereShows } = this.props
 
     return (
       <Dialog
+        hasFooter={false}
         cancelLabel="Cerrar"
         isShown={modalVisibility}
-        title={selectedPremiere.title}
-        confirmLabel="Comprar entradas"
+        title={selectedPremiere.name}
         onCloseComplete={toggleVisibility}
-        onConfirm={this.handleConfirmDialog}
       >
-        <Tablist marginBottom={16} flexBasis={240} marginRight={24}>
+        <Tablist marginBottom={14}>
           {tabs.map((tab, index) => (
             <Tab
               id={tab}
@@ -69,9 +53,9 @@ class Modal extends Component {
               aria-hidden={index !== selectedIndex}
               display={index === selectedIndex ? 'block' : 'none'}
             >
-              {tab === 'Horarios' && <Schedules schedules={modalData} />}
+              {tab === 'Funciones' && <Schedules shows={selectedPremiereShows} />}
               {tab === 'Descripción' && <Description movie={selectedPremiere} />}
-              {tab === 'Trailer' && <Trailer videoId={selectedPremiere.details.youTubeId} />}
+              {tab === 'Trailer' && <Trailer videoId={selectedPremiere.youTubeId} />}
             </Pane>
           ))}
         </Pane>

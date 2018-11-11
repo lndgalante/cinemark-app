@@ -51,7 +51,7 @@ const SubWrapper = styled.div`
   }
 `
 
-const Header = props => (
+const Header = () => (
   <Wrapper>
     <SubWrapper>
       <Select />

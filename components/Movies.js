@@ -8,6 +8,7 @@ const MoviesContainer = styled.section`
   width: 100%;
   height: 300px;
   margin-top: 14px;
+  position: relative;
 `
 
 const SpinnerContainer = styled.section`
@@ -16,31 +17,25 @@ const SpinnerContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
 `
 
 class Movies extends Component {
   render() {
     const { status, movies, setPremiere } = this.props
 
-    if (status === 'loading') {
-      return (
-        <MoviesContainer>
+    return (
+      <MoviesContainer>
+        {status === 'loading' && (
           <SpinnerContainer>
-            <Spinner />
+            <Spinner size={42} />
           </SpinnerContainer>
-        </MoviesContainer>
-      )
-    }
-
-    if (movies && movies.length) {
-      return (
-        <MoviesContainer>
-          <Slider movies={movies} handleSelectMovie={setPremiere} />
-        </MoviesContainer>
-      )
-    }
-
-    return <MoviesContainer />
+        )}
+        <Slider movies={movies} handleSelectMovie={setPremiere} />
+      </MoviesContainer>
+    )
   }
 }
 

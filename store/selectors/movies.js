@@ -2,16 +2,14 @@ import { createSelector } from 'reselect'
 import { toaster } from 'evergreen-ui'
 
 const getPremieres = state => state.movies.premieres
-const getSelectedCinema = state => state.select.selectedCinema.value
+const getSelectedCinema = state => state.select.selectedCinema.cinemaId
 const getSearchQuery = state => state.query
 
-const filterMoviesByCinema = (movies, cinema) => movies.filter(({ cinemas }) => cinemas.hasOwnProperty(cinema))
+const filterMoviesByCinema = (movies, cinema) => movies.filter(({ inCinemas }) => inCinemas.includes(cinema))
 const filterMoviesByQuery = (movies, query) =>
-  movies.filter(({ title }) => title.toLowerCase().includes(query.toLowerCase()))
+  movies.filter(({ name }) => name.toLowerCase().includes(query.toLowerCase()))
 const filterMoviesByCinemaAndQuery = (movies, cinema, query) =>
-  movies.filter(
-    ({ title, cinemas }) => cinemas.hasOwnProperty(cinema) && title.toLowerCase().includes(query.toLowerCase())
-  )
+  movies.filter(({ name, inCinemas }) => inCinemas.includes(cinema) && name.toLowerCase().includes(query.toLowerCase()))
 
 const moviesSelector = createSelector(
   [getPremieres, getSelectedCinema, getSearchQuery],
@@ -27,7 +25,7 @@ const moviesSelector = createSelector(
       const moviesFilteredByCinemaAndQuery = filterMoviesByCinemaAndQuery(movies, selectedCinema, query)
 
       if (!moviesFilteredByCinemaAndQuery.length) {
-        toaster.warning(`No encontramos "${query}" en ${selectedCinema}`)
+        toaster.warning(`No encontramos "${query}"`)
         return filterMoviesByCinema(movies, selectedCinema)
       }
 

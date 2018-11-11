@@ -4,7 +4,7 @@ import { setStatusLoading, setStatusSuccess } from './status'
 // Initial State
 const initialState = {
   cinemas: null,
-  selectedCinema: { value: '', label: '', tags: null },
+  selectedCinema: { value: '', label: '' },
 }
 
 // Action Types
@@ -79,7 +79,7 @@ const handleDeselect = () => {
     dispatch(setStatusLoading())
     dispatch(removeCinema())
 
-    await sleep(400)
+    await sleep(1000)
     dispatch(setStatusSuccess())
   }
 }
