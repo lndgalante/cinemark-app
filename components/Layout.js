@@ -20,10 +20,15 @@ const Main = styled.main`
   justify-content: center;
 `
 
+const Title = styled.h1`
+  display: none;
+`
+
 class Layout extends Component {
   componentDidMount() {
     ReactGA.initialize('UA-128371929-1')
     ReactGA.pageview(window.location.pathname)
+    document.querySelector('.btn-select').removeAttribute('role')
   }
 
   render() {
@@ -31,7 +36,10 @@ class Layout extends Component {
 
     return (
       <Wrapper>
-        <Main>{children}</Main>
+        <Main>
+          <Title>Cinemark Estrenos</Title>
+          {children}
+        </Main>
         <Reset />
       </Wrapper>
     )

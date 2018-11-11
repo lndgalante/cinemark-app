@@ -21,7 +21,7 @@ const Movie = ({ movie, handleSelectMovie }) => (
       src={movie.poster}
       placeholder={movie.poster.includes('w300') ? movie.poster.replace('w300', 'w200') : movie.poster}
     >
-      {(src, loading) => (loading ? <div style={getStyle(src)} /> : <Poster src={src} alt={movie.title} />)}
+      {(src, loading) => (loading ? <div style={getStyle(src)} /> : <Poster src={src} alt={movie.name} />)}
     </ProgressiveImage>
     <Overlay className="overlay">
       <Heading color="white" marginBottom={6}>

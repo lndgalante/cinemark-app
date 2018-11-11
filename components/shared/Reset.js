@@ -34,6 +34,10 @@ const Reset = createGlobalStyle`
     margin-top: 14px;
   }
 
+  .BrainhubCarousel__dots .BrainhubCarousel__dot {
+    opacity: 0.7;
+  }
+
   .BrainhubCarousel__dots .BrainhubCarousel__dot.BrainhubCarousel__dot--selected:before {
     width: 6px;
     height: 6px;
