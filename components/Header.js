@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Select from '../containers/Select'
 import Tags from '../containers/Tags'
 import Search from '../containers/Search'
-import Languages from '../containers/Languages'
 
 const Wrapper = styled.header`
   display: grid;
@@ -52,22 +51,13 @@ const SubWrapper = styled.div`
   }
 `
 
-const Filters = styled.div`
-  display: grid;
-  grid-gap: 7px;
-  grid-template-columns: 1fr auto;
-`
-
 const Header = () => (
   <Wrapper>
     <SubWrapper>
       <Select />
       <Tags />
     </SubWrapper>
-    <Filters>
-      <Search />
-      <Languages />
-    </Filters>
+    <Search />
   </Wrapper>
 )
 

@@ -5,7 +5,6 @@ import thunk from 'redux-thunk'
 import { statusReducer } from './ducks/status'
 import { selectReducer } from './ducks/select'
 import { searchReducer } from './ducks/search'
-import { languagesReducer } from './ducks/languages'
 import { moviesReducer } from './ducks/movies'
 import { modalReducer } from './ducks/modal'
 
@@ -16,7 +15,6 @@ const rootReducer = combineReducers({
   status: statusReducer,
   select: selectReducer,
   movies: moviesReducer,
-  languages: languagesReducer,
   modalVisibility: modalReducer,
 })
 
