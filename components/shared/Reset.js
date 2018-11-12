@@ -61,10 +61,10 @@ const Reset = createGlobalStyle`
 
   @media screen and (max-width: 576px) {
     .📦mb_12vmin[role='dialog'] {
-      padding: 0;
       margin: 14px;
       max-width: 100vh;
       max-height: 95vh;
+      padding: 0 0 14px 0;
     }
 
     .date-cell {
