@@ -58,6 +58,21 @@ const Reset = createGlobalStyle`
   .📦mb_12vmin[role='dialog'] {
     padding-bottom: 14px;
   }
+
+  @media screen and (max-width: 576px) {
+    .📦mb_12vmin[role='dialog'] {
+      padding: 0;
+      margin: 14px;
+      max-width: 100vh;
+      max-height: 95vh;
+    }
+
+    .date-cell {
+      flex-basis: 115px !important;
+      flex-shrink: 0 !important;
+      flex-grow: 0 !important;
+    }
+  }
 `
 
 export default Reset

@@ -12,7 +12,7 @@ const Select = ({ cinemas, selectedCinema, handleSelect, handleDeselect }) => (
     selected={selectedCinema.value}
   >
     <Button height={40} appearance="primary" className="btn-select">
-      {selectedCinema.label || 'Elegí tu cine'}
+      {selectedCinema.label || 'Elegir cine'}
     </Button>
   </SelectMenu>
 )
