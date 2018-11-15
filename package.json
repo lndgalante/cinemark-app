@@ -4,17 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@brainhubeu/react-carousel": "^1.10.6",
+    "@brainhubeu/react-carousel": "^1.10.11",
     "@zeit/next-css": "^1.0.1",
     "env-hoc": "^1.2.7",
-    "evergreen-ui": "^4.5.0",
+    "evergreen-ui": "^4.7.0",
     "geolib": "^2.0.24",
     "lodash.debounce": "^4.0.8",
     "next": "^7.0.2",
     "next-redux-wrapper": "^2.0.0",
-    "node-fetch": "^2.2.1",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
+    "node-fetch": "^2.3.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-ga": "^2.5.3",
     "react-progressive-image": "^0.6.0",
     "react-redux": "^5.1.1",
@@ -22,7 +22,7 @@
     "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "styled-components": "^4.0.3"
+    "styled-components": "^4.1.1"
   },
   "scripts": {
     "dev": "next",
