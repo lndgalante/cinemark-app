@@ -55,16 +55,18 @@ const Reset = createGlobalStyle`
     white-space: normal !important;
   }
 
-  .📦mb_12vmin[role='dialog'] {
+  .📦ml_16px[role='dialog'] {
     padding-bottom: 14px;
   }
 
   @media screen and (max-width: 576px) {
-    .📦mb_12vmin[role='dialog'] {
-      margin: 14px;
-      max-width: 100vh;
-      max-height: 95vh;
-      padding: 0 0 14px 0;
+    .📦ml_16px[role='dialog'] {
+      margin: 14px !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      height: 100% !important;
+      max-height: 96vh !important;
+      padding: 0 0 14px 0 !important;
     }
 
     .date-cell {

@@ -31,11 +31,5 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.8.0"
-  },
-  "now": {
-    "alias": "cinemark-estrenos",
-    "engines": {
-      "node": "^10.0.0"
-    }
   }
 }
