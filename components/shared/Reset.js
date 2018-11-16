@@ -34,6 +34,14 @@ const Reset = createGlobalStyle`
     margin-top: 14px;
   }
 
+  @media screen and (max-width: 768px) {
+    .BrainhubCarousel__dots {
+      margin-top: 0;
+      margin-right: -7px;
+      justify-content: flex-end;
+    }
+  }
+
   .BrainhubCarousel__dots .BrainhubCarousel__dot {
     opacity: 0.7;
   }
