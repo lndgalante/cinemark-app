@@ -22,8 +22,8 @@ const StyledBadge = styled(Badge)`
 const Schedules = ({ shows }) => (
   <Table>
     <StyledHead>
-      <Table.TextCell flexBasis={75} flexShrink={0} flexGrow={0}>
-        Formato
+      <Table.TextCell flexBasis={52} flexShrink={0} flexGrow={0}>
+        Tipo
       </Table.TextCell>
       <Table.TextCell className="date-cell">Fecha</Table.TextCell>
       <Table.TextCell flexBasis={90} flexShrink={0} flexGrow={0}>
@@ -35,7 +35,7 @@ const Schedules = ({ shows }) => (
       {shows.map(({ format, version, cinemas }) =>
         cinemas.map(({ date, time, link }) => (
           <Table.Row key={link} height="auto" paddingY={12} isSelectable onSelect={() => window.open(link)}>
-            <Table.TextCell flexBasis={75} flexShrink={0} flexGrow={0}>
+            <Table.TextCell flexBasis={52} flexShrink={0} flexGrow={0}>
               <Avatar name={format.split('').join(' ')} isSolid size={28} />
             </Table.TextCell>
             <Table.TextCell className="date-cell">{date}</Table.TextCell>
