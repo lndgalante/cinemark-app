@@ -65,12 +65,12 @@ const Reset = createGlobalStyle`
       width: 100% !important;
       max-width: 100vw !important;
       height: 100% !important;
-      max-height: 96vh !important;
+      max-height: calc(100vh - 28px) !important;
       padding: 0 0 14px 0 !important;
     }
 
     .date-cell {
-      flex-basis: 115px !important;
+      flex-basis: 105px !important;
       flex-shrink: 0 !important;
       flex-grow: 0 !important;
     }
