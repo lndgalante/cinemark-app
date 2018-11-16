@@ -62,6 +62,7 @@ const removeCinema = () => ({
 // Async actions
 const handleSelect = payload => {
   document.title = payload.value
+  document.querySelector('.btn-select').click()
 
   return async dispatch => {
     dispatch(setStatusLoading())
@@ -74,6 +75,7 @@ const handleSelect = payload => {
 
 const handleDeselect = () => {
   document.title = 'Cinemark Estrenos'
+  document.querySelector('.btn-select').click()
 
   return async dispatch => {
     dispatch(setStatusLoading())
