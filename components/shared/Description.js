@@ -9,6 +9,13 @@ const Description = ({ movie }) => (
       <Text> {movie.minAge}</Text>
     </Paragraph>
 
+    {movie.votes ? (
+      <Paragraph marginBottom={2}>
+        <Strong>Puntuación</Strong>
+        <Text> {movie.votes}</Text>
+      </Paragraph>
+    ) : null}
+
     <Paragraph marginBottom={2}>
       <Strong>Género</Strong>
       <Text> {movie.category}</Text>
@@ -18,13 +25,6 @@ const Description = ({ movie }) => (
       <Strong>Duración</Strong>
       <Text> {movie.duration}</Text>
     </Paragraph>
-
-    {movie.votes ? (
-      <Paragraph marginBottom={2}>
-        <Strong>Puntuación</Strong>
-        <Text> {movie.votes}</Text>
-      </Paragraph>
-    ) : null}
 
     <Paragraph size={300} marginBottom={2}>
       <Strong>Director{movie.cast.directors.length > 1 ? 'es' : ''}</Strong>

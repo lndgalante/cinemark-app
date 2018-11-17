@@ -2,6 +2,7 @@ import ProgressiveImage from 'react-progressive-image'
 import { Heading, Pill, Paragraph, Strong, Text } from 'evergreen-ui'
 
 import Tile from './Tile'
+import Emojis from './Emojis'
 import Emoji from './Emoji'
 import Poster from './Poster'
 import Overlay from './Overlay'
@@ -10,8 +11,8 @@ const getStyle = src => {
   return {
     width: '200px',
     height: '300px',
-    backgroundImage: `url(${src})`,
     filter: 'blur(10px)',
+    backgroundImage: `url(${src})`,
     transition: 'filter 500ms ease',
   }
 }
@@ -24,7 +25,12 @@ const Movie = ({ movie, handleSelectMovie }) => (
     >
       {(src, loading) => (loading ? <div style={getStyle(src)} /> : <Poster src={src} alt={movie.name} />)}
     </ProgressiveImage>
-    <Emoji>{movie.emoji}</Emoji>
+
+    <Emojis>
+      {movie.isPremiere && <Emoji>✨</Emoji>}
+      <Emoji>{movie.emoji}</Emoji>
+    </Emojis>
+
     <Overlay className="overlay">
       <Heading color="white" marginBottom={6}>
         {movie.name}
@@ -34,7 +40,13 @@ const Movie = ({ movie, handleSelectMovie }) => (
         {movie.minAge}
       </Pill>
 
-      {movie.votes ? <Pill marginBottom={8}>{movie.votes}</Pill> : null}
+      {movie.votes ? (
+        <Pill marginBottom={8} marginRight={4}>
+          {movie.votes}
+        </Pill>
+      ) : null}
+
+      {movie.isPremiere ? <Pill marginBottom={8}>Estreno</Pill> : null}
 
       <Paragraph size={300} marginBottom={2}>
         <Strong color="white">Género</Strong>

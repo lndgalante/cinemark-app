@@ -27,7 +27,7 @@ class Modal extends Component {
         hasFooter={false}
         cancelLabel="Cerrar"
         isShown={modalVisibility}
-        title={selectedPremiere.name}
+        title={`${selectedPremiere.name} ${selectedPremiere.isPremiere ? '( Estreno )' : ''}`}
         onCloseComplete={toggleVisibility}
       >
         <Tablist marginBottom={14}>
