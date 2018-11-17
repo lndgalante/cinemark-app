@@ -2,6 +2,7 @@ import ProgressiveImage from 'react-progressive-image'
 import { Heading, Pill, Paragraph, Strong, Text } from 'evergreen-ui'
 
 import Tile from './Tile'
+import Emoji from './Emoji'
 import Poster from './Poster'
 import Overlay from './Overlay'
 
@@ -23,6 +24,7 @@ const Movie = ({ movie, handleSelectMovie }) => (
     >
       {(src, loading) => (loading ? <div style={getStyle(src)} /> : <Poster src={src} alt={movie.name} />)}
     </ProgressiveImage>
+    <Emoji>{movie.emoji}</Emoji>
     <Overlay className="overlay">
       <Heading color="white" marginBottom={6}>
         {movie.name}

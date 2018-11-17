@@ -12,8 +12,8 @@ const initialState = {
 
 // Action Types
 const types = {
-  setPremieres: 'SET_PREMIERES',
   setPremiere: 'SET_PREMIERE',
+  setPremieres: 'SET_PREMIERES',
   setPremiereShows: 'SET_PREMIERE_SHOWS',
 }
 
