@@ -1,4 +1,4 @@
-import sleep from '../../utils/sleep'
+import { sleep } from '../../utils'
 import { setStatusLoading, setStatusSuccess } from './status'
 
 // Initial State

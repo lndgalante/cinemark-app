@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import { toaster } from 'evergreen-ui'
 
-import normalize from '../../utils/string'
+import { normalize } from '../../utils'
 
 const getPremieres = state => state.movies.premieres
 const getSelectedCinema = state => state.select.selectedCinema.cinemaId

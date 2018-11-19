@@ -14,7 +14,7 @@ import Meta from '../components/Meta'
 import { setCinemas } from '../store/ducks/select'
 import { setPremieres } from '../store/ducks/movies'
 
-import cinemas from '../utils/cinemas'
+import cinemas from '../static/cinemas'
 
 const Premieres = () => {
   return (

@@ -42,7 +42,7 @@ class Layout extends Component {
     return (
       <Wrapper>
         <Main>
-          <Title>Cinemark Estrenos</Title>
+          <Title>Cine Estrenos</Title>
           {children}
         </Main>
         <Reset />

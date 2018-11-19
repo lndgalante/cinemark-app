@@ -1,4 +1,4 @@
-import sleep from '../../utils/sleep'
+import { sleep } from '../../utils'
 import { setStatusLoading, setStatusSuccess } from './status'
 
 // Initial State
@@ -74,7 +74,7 @@ const handleSelect = payload => {
 }
 
 const handleDeselect = () => {
-  document.title = 'Cinemark Estrenos'
+  document.title = 'Cine Estrenos'
   document.querySelector('.btn-select').click()
 
   return async dispatch => {

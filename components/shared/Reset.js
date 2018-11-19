@@ -9,6 +9,10 @@ const Reset = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body {
+    overflow: hidden;
+  }
+
   /* Carousel */
   .BrainhubCarousel {
     position: relative;

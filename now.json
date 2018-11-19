@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "cinemark-estrenos",
-  "alias": "cinemark-estrenos",
-  "engines": { "node": "^10.0.0" },
+  "name": "cine-estrenos",
+  "alias": "cine-estrenos",
+  "engines": { "node": "^11.0.0" },
   "builds": [{ "src": "next.config.js", "use": "@now/next" }]
 }
