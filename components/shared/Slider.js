@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Carousel, { Dots } from '@brainhubeu/react-carousel'
+import Carousel from '@brainhubeu/react-carousel'
 
 import Handler from './Handler'
 import Movie from './Movie'
@@ -30,7 +30,6 @@ class Slider extends Component {
             <Movie key={movie.movieId} movie={movie} handleSelectMovie={handleSelectMovie} />
           ))}
         </Carousel>
-        {movies.length >= 3 && <Dots value={value} number={movies.length} onChange={this.onChange} />}
       </div>
     )
   }

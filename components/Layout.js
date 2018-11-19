@@ -18,6 +18,11 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 14px;
+    justify-content: flex-start;
+  }
 `
 
 const Title = styled.h1`

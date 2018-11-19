@@ -27,14 +27,16 @@ class Modal extends Component {
         hasFooter={false}
         cancelLabel="Cerrar"
         isShown={modalVisibility}
-        title={`${selectedPremiere.name} ${selectedPremiere.isPremiere ? '( Estreno )' : ''}`}
+        title={`${selectedPremiere.name} ${selectedPremiere.isPremiere ? '- Estreno' : ''}`}
         onCloseComplete={toggleVisibility}
       >
-        <Tablist marginBottom={14}>
+        <Tablist marginBottom={14} display="flex">
           {tabs.map((tab, index) => (
             <Tab
               id={tab}
               key={tab}
+              flex={1}
+              height={40}
               aria-controls={`panel-${tab}`}
               isSelected={index === selectedIndex}
               onSelect={() => this.handleSelectIndex(index)}

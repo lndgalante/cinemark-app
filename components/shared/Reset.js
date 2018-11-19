@@ -30,27 +30,6 @@ const Reset = createGlobalStyle`
     height: 100%;
   }
 
-  .BrainhubCarousel__dots {
-    margin-top: 14px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .BrainhubCarousel__dots {
-      margin-top: 0;
-      margin-right: -7px;
-      justify-content: flex-end;
-    }
-  }
-
-  .BrainhubCarousel__dots .BrainhubCarousel__dot {
-    opacity: 0.7;
-  }
-
-  .BrainhubCarousel__dots .BrainhubCarousel__dot.BrainhubCarousel__dot--selected:before {
-    width: 6px;
-    height: 6px;
-  }
-
   /* Carousel Handlers */
   svg[data-icon='chevron-left'],
   svg[data-icon='chevron-right'] {
@@ -69,12 +48,14 @@ const Reset = createGlobalStyle`
 
   @media screen and (max-width: 576px) {
     .📦ml_16px[role='dialog'] {
-      margin: 14px !important;
+      margin: 68px 0 0 0 !important;
       width: 100% !important;
       max-width: 100vw !important;
       height: 100% !important;
-      max-height: calc(100vh - 28px) !important;
+      max-height: calc(100vh - 68px) !important;
       padding: 0 0 14px 0 !important;
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
     }
 
     .date-cell {
