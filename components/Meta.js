@@ -4,6 +4,7 @@ const Meta = () => (
   <Head>
     {/* General */}
     <title>Cine Estrenos</title>
+    <meta charset="UTF-8" />
     <meta name="title" content="Cine Estrenos" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="description" content="Obtené todos los estrenos de Cinemark Hoyts" />
@@ -13,7 +14,7 @@ const Meta = () => (
     />
     <meta name="language" content="Spanish" />
     <meta name="robots" content="index, follow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {/* Favicons */}
     <link rel="icon" type="image/png" sizes="32x32" href="./static/favicons/favicon-32x32.png" />
@@ -26,6 +27,7 @@ const Meta = () => (
 
     {/* IE */}
     <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="msapplication-starturl" content="/" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="./static/icons/icon-144x144.png" />
