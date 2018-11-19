@@ -2,6 +2,6 @@
   "version": 2,
   "name": "cine-estrenos",
   "alias": "cine-estrenos",
-  "engines": { "node": "^11.0.0" },
+  "engines": { "node": "^10.0.0" },
   "builds": [{ "src": "next.config.js", "use": "@now/next" }]
 }
