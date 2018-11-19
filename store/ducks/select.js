@@ -61,7 +61,7 @@ const removeCinema = () => ({
 
 // Async actions
 const handleSelect = payload => {
-  document.title = payload.value
+  document.title = payload.label
   document.querySelector('.btn-select').click()
 
   return async dispatch => {
