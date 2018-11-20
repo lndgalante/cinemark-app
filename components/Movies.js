@@ -9,9 +9,17 @@ const MoviesContainer = styled.section`
   height: 300px;
   margin-top: 14px;
   position: relative;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 162px);
+  }
 `
 
-const SpinnerContainer = styled.section`
+const SpinnerContainer = styled.div`
+  z-index: 10;
   width: 100%;
   height: 100%;
   display: flex;
@@ -19,7 +27,10 @@ const SpinnerContainer = styled.section`
   justify-content: center;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 10;
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
 `
 
 class Movies extends Component {
