@@ -11,7 +11,7 @@ class Slider extends Component {
 
   render() {
     const { value } = this.state
-    const { status, movies, handleSelectMovie } = this.props
+    const { movies, handleSelectMovie } = this.props
 
     return (
       <div>
@@ -25,7 +25,6 @@ class Slider extends Component {
           addArrowClickHandler
           arrowLeft={movies.length > 3 && <Handler position="left" />}
           arrowRight={movies.length > 3 && <Handler position="right" />}
-          className={status === 'loading' ? 'blur' : ''}
         >
           {movies.map(movie => (
             <Movie key={movie.movieId} movie={movie} handleSelectMovie={handleSelectMovie} />

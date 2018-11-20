@@ -16,9 +16,9 @@ const Reset = createGlobalStyle`
 
   /* Carousel */
   .BrainhubCarousel {
-    position: relative;
     width: 100%;
     height: 300px;
+    position: relative;
   }
 
   @media screen and (min-width: 768px) {
@@ -29,10 +29,6 @@ const Reset = createGlobalStyle`
 
   .BrainhubCarousel {
     transition: filter 300ms ease-in-out;
-  }
-
-  .blur {
-    filter: blur(3px);
   }
 
   .BrainhubCarousel .BrainhubCarousel__trackContainer {
@@ -48,11 +44,6 @@ const Reset = createGlobalStyle`
   svg[data-icon='chevron-right'] {
     transform-origin: center;
     transition: all 400ms ease-in-out 100ms;
-  }
-
-  /* Spinner */
-  circle {
-    stroke: white !important;
   }
 
   /* Modal styles */

@@ -24,7 +24,7 @@ const SpinnerContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: white;
 `
 
 class Movies extends Component {
@@ -38,7 +38,7 @@ class Movies extends Component {
             <Spinner size={42} />
           </SpinnerContainer>
         )}
-        <Slider movies={movies} status={status} handleSelectMovie={setPremiere} />
+        <Slider movies={movies} handleSelectMovie={setPremiere} />
       </MoviesContainer>
     )
   }
