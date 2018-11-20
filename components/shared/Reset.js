@@ -14,15 +14,6 @@ const Reset = createGlobalStyle`
     overflow: hidden;
   }
 
-  /* Fix for iOS zoom */
-  @media screen and (max-width: 768px) {
-    select,
-    textarea,
-    input {
-      font-size: 16px !important;
-    }
-  }
-
   /* Carousel */
   .BrainhubCarousel {
     position: relative;
@@ -34,6 +25,10 @@ const Reset = createGlobalStyle`
     .BrainhubCarousel:hover .handler {
       opacity: 1;
     }
+  }
+
+  .BrainhubCarousel {
+    transition: filter 300ms ease-in-out;
   }
 
   .blur {
