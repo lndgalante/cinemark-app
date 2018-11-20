@@ -11,7 +11,7 @@ class Slider extends Component {
 
   render() {
     const { value } = this.state
-    const { movies, handleSelectMovie } = this.props
+    const { status, movies, handleSelectMovie } = this.props
 
     return (
       <div>
@@ -20,11 +20,12 @@ class Slider extends Component {
           value={value}
           itemWidth={206}
           onChange={this.onChange}
-          centered={movies.length >= 3}
-          infinite={movies.length >= 3}
+          centered={movies.length > 3}
+          infinite={movies.length > 3}
           addArrowClickHandler
-          arrowLeft={movies.length >= 3 && <Handler position="left" />}
-          arrowRight={movies.length >= 3 && <Handler position="right" />}
+          arrowLeft={movies.length > 3 && <Handler position="left" />}
+          arrowRight={movies.length > 3 && <Handler position="right" />}
+          className={status === 'loading' ? 'blur' : ''}
         >
           {movies.map(movie => (
             <Movie key={movie.movieId} movie={movie} handleSelectMovie={handleSelectMovie} />

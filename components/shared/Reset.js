@@ -36,6 +36,10 @@ const Reset = createGlobalStyle`
     }
   }
 
+  .blur {
+    filter: blur(3px);
+  }
+
   .BrainhubCarousel .BrainhubCarousel__trackContainer {
     margin: 0 -3px;
   }
@@ -49,6 +53,11 @@ const Reset = createGlobalStyle`
   svg[data-icon='chevron-right'] {
     transform-origin: center;
     transition: all 400ms ease-in-out 100ms;
+  }
+
+  /* Spinner */
+  circle {
+    stroke: white !important;
   }
 
   /* Modal styles */

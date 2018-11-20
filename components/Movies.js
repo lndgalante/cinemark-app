@@ -9,12 +9,10 @@ const MoviesContainer = styled.section`
   height: 300px;
   margin-top: 14px;
   position: relative;
+  overflow: hidden;
 
   @media screen and (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: calc(100% - 162px);
+    margin-top: 28px;
   }
 `
 
@@ -26,11 +24,7 @@ const SpinnerContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.8);
-
-  @media screen and (max-width: 768px) {
-    width: 100vw;
-  }
+  background-color: rgba(255, 255, 255, 0.4);
 `
 
 class Movies extends Component {
@@ -44,7 +38,7 @@ class Movies extends Component {
             <Spinner size={42} />
           </SpinnerContainer>
         )}
-        <Slider movies={movies} handleSelectMovie={setPremiere} />
+        <Slider movies={movies} status={status} handleSelectMovie={setPremiere} />
       </MoviesContainer>
     )
   }
