@@ -6,4 +6,11 @@ const normalize = string =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
 
-export { sleep, normalize }
+const getPremiereInfo = async (movieId, cinemaId) => {
+  const res = await fetch(`https://cinemark-wrapper-api.now.sh/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
+  const data = await res.json()
+
+  return data
+}
+
+export { sleep, normalize, getPremiereInfo }

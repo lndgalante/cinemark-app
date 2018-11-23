@@ -1,5 +1,7 @@
 import { toaster } from 'evergreen-ui'
+import Router from 'next/router'
 
+import { getPremiereInfo } from '../../utils'
 import { toggleVisibility } from './modal'
 import { setStatusLoading, setStatusSuccess } from './status'
 
@@ -64,13 +66,6 @@ const setDefaultPremiereShows = payload => ({
 })
 
 // Async actions
-const getPremiereInfo = async (movieId, cinemaId) => {
-  const res = await fetch(`https://cinemark-wrapper-api.now.sh/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
-  const data = await res.json()
-
-  return data
-}
-
 const setPremiere = payload => {
   return async (dispatch, getState) => {
     const { selectedCinema } = getState().select
@@ -81,7 +76,10 @@ const setPremiere = payload => {
     const { movieId } = payload
 
     dispatch(setStatusLoading())
+
     const premiereInfo = await getPremiereInfo(movieId, cinemaId)
+    Router.push(`/?id=${movieId}&cinema=${cinemaId}`, `/?id=${movieId}&cinema=${cinemaId}`, { shallow: true })
+
     dispatch(setStatusSuccess())
 
     if (premiereInfo && premiereInfo.name) {
@@ -92,4 +90,4 @@ const setPremiere = payload => {
   }
 }
 
-export { moviesReducer, setPremieres, setPremiere }
+export { moviesReducer, setPremieres, setPremiere, setDefaultPremiere, setDefaultPremiereShows }

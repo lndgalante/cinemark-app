@@ -86,4 +86,4 @@ const handleDeselect = () => {
   }
 }
 
-export { selectReducer, setCinemas, handleSelect, handleDeselect }
+export { selectReducer, setCinemas, setCinema, handleSelect, handleDeselect }

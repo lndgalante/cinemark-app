@@ -4,7 +4,7 @@ const Meta = () => (
   <Head>
     {/* General */}
     <title>Cine Estrenos</title>
-    <meta charset="UTF-8" />
+    <meta charSet="UTF-8" />
     <meta name="title" content="Cine Estrenos" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="description" content="Obtené todos los estrenos de Cinemark Hoyts" />
@@ -27,7 +27,7 @@ const Meta = () => (
 
     {/* IE */}
     <meta name="theme-color" content="#ffffff" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
     <meta name="msapplication-starturl" content="/" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="./static/icons/icon-144x144.png" />

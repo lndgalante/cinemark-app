@@ -11,8 +11,9 @@ import Movies from '../containers/Movies'
 import Modal from '../containers/Modal'
 import Meta from '../components/Meta'
 
-import { setCinemas } from '../store/ducks/select'
-import { setPremieres } from '../store/ducks/movies'
+import { toggleVisibility } from '../store/ducks/modal'
+import { setCinemas, setCinema } from '../store/ducks/select'
+import { setPremieres, setDefaultPremiere, setDefaultPremiereShows } from '../store/ducks/movies'
 
 import cinemas from '../static/cinemas'
 
@@ -27,9 +28,50 @@ const Premieres = () => {
   )
 }
 
-Premieres.getInitialProps = async ({ env, store }) => {
+Premieres.getInitialProps = async ({ query, store, env }) => {
+  const { id, cinema } = query
   const ipAddress = env.ipAddress
-  // const ipAddress = '181.29.166.97'
+
+  if (id && cinema) {
+    try {
+      const urls = [
+        `http://ip-api.com/json/${ipAddress}`,
+        'https://cinemark-wrapper-api.now.sh/movies',
+        `https://cinemark-wrapper-api.now.sh/movie?movieId=${id}&cinemaId=${cinema}`,
+      ]
+      const [ip, premieres, premiere] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
+
+      const { lat, lon } = ip
+      const parsedCinemas = cinemas.map(({ name, ...restProps }) => ({ value: name, label: name, ...restProps }))
+      const cinemasOrderedByDistance = orderByDistance({ lat, lon }, parsedCinemas).map(({ key }) => parsedCinemas[key])
+      const selectedCinema = cinemas.find(({ cinemaId }) => String(cinemaId) === cinema)
+      const selectedPremiere = premieres.find(({ movieId }) => movieId === id)
+
+      store.dispatch(setCinemas(cinemasOrderedByDistance))
+      store.dispatch(setCinema(selectedCinema))
+      store.dispatch(setPremieres(premieres))
+      store.dispatch(setDefaultPremiere(selectedPremiere))
+      store.dispatch(setDefaultPremiereShows(premiere.shows))
+      store.dispatch(toggleVisibility())
+    } catch (error) {
+      const urls = [
+        'https://cinemark-wrapper-api.now.sh/movies',
+        `https://cinemark-wrapper-api.now.sh/movie?movieId=${id}&cinemaId=${cinema}`,
+      ]
+      const [premieres, premiere] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
+      const selectedCinema = cinemas.find(({ cinemaId }) => String(cinemaId) === cinema)
+      const selectedPremiere = premieres.find(({ movieId }) => movieId === id)
+
+      store.dispatch(setCinemas(cinemas))
+      store.dispatch(setCinema(selectedCinema))
+      store.dispatch(setPremieres(premieres))
+      store.dispatch(setDefaultPremiere(selectedPremiere))
+      store.dispatch(setDefaultPremiereShows(premiere.shows))
+      store.dispatch(toggleVisibility())
+    }
+
+    return
+  }
 
   try {
     const urls = [`http://ip-api.com/json/${ipAddress}`, 'https://cinemark-wrapper-api.now.sh/movies']

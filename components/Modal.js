@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Dialog, Tablist, Tab, Pane } from 'evergreen-ui'
+import { Dialog, Tablist, Tab, Pane, toaster } from 'evergreen-ui'
+import Router from 'next/router'
 
 import Schedules from './shared/Schedules'
 import Description from './shared/Description'
@@ -13,6 +14,25 @@ class Modal extends Component {
 
   handleSelectIndex = index => this.setState({ selectedIndex: index })
 
+  handleConfirm = premiere => {
+    if (navigator.share) {
+      navigator.share({
+        title: premiere.name,
+        url: window.location.href,
+        text: premiere.description,
+      })
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        toaster.notify(`Link copiado al portapapeles`)
+      })
+    }
+  }
+
+  handleClose = () => {
+    this.props.toggleVisibility()
+    Router.push('/', '/', { shallow: true })
+  }
+
   componentDidUpdate(prevProps) {
     const { modalVisibility } = this.props
     if (modalVisibility !== prevProps.modalVisibility) this.setState({ selectedIndex: 0 })
@@ -20,15 +40,16 @@ class Modal extends Component {
 
   render() {
     const { tabs, selectedIndex } = this.state
-    const { modalVisibility, toggleVisibility, selectedPremiere, selectedPremiereShows } = this.props
+    const { modalVisibility, selectedPremiere, selectedPremiereShows } = this.props
 
     return (
       <Dialog
-        hasFooter={false}
         cancelLabel="Cerrar"
+        confirmLabel="Compartir"
         isShown={modalVisibility}
+        onCloseComplete={this.handleClose}
+        onConfirm={() => this.handleConfirm(selectedPremiere)}
         title={`${selectedPremiere.name} ${selectedPremiere.isPremiere ? '- Estreno' : ''}`}
-        onCloseComplete={toggleVisibility}
       >
         <Tablist marginBottom={14} display="flex">
           {tabs.map((tab, index) => (

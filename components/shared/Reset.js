@@ -51,9 +51,9 @@ const Reset = createGlobalStyle`
     white-space: normal !important;
   }
 
-  .📦ml_16px[role='dialog'] {
+  /*.📦ml_16px[role='dialog'] {
     padding-bottom: 14px;
-  }
+  } */
 
   @media screen and (max-width: 576px) {
     .📦ml_16px[role='dialog'] {
@@ -61,8 +61,8 @@ const Reset = createGlobalStyle`
       width: 100% !important;
       max-width: 100vw !important;
       height: 100% !important;
+      padding: 0 !important;
       max-height: calc(100vh - 68px) !important;
-      padding: 0 0 14px 0 !important;
       border-bottom-left-radius: 0 !important;
       border-bottom-right-radius: 0 !important;
     }

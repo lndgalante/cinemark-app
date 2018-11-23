@@ -8,7 +8,7 @@ const types = {
 }
 
 // Reducer
-const statusReducer = (state = initialState, { type, payload }) => {
+const statusReducer = (state = initialState, { type }) => {
   switch (type) {
     case types.setLoading: {
       return 'loading'
