@@ -25,6 +25,7 @@ const SpinnerContainer = styled.div`
   justify-content: center;
   position: absolute;
   background-color: white;
+  border: 4px solid white;
 `
 
 class Movies extends Component {

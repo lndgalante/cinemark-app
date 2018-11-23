@@ -62,7 +62,7 @@ const Reset = createGlobalStyle`
       max-width: 100vw !important;
       height: 100% !important;
       padding: 0 !important;
-      max-height: calc(100vh - 68px) !important;
+      max-height: calc(100% - 68px) !important;
       border-bottom-left-radius: 0 !important;
       border-bottom-right-radius: 0 !important;
     }

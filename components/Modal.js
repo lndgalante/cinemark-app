@@ -14,17 +14,21 @@ class Modal extends Component {
 
   handleSelectIndex = index => this.setState({ selectedIndex: index })
 
-  handleConfirm = premiere => {
+  handleConfirm = () => {
+    const { selectedPremiere } = this.props
+
     if (navigator.share) {
       navigator.share({
-        title: premiere.name,
+        title: selectedPremiere.name,
         url: window.location.href,
-        text: premiere.description,
+        text: selectedPremiere.description,
       })
     } else {
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        toaster.notify(`Link copiado al portapapeles`)
-      })
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          toaster.notify(`Link copiado al portapapeles`)
+        })
+      }
     }
   }
 
@@ -47,8 +51,8 @@ class Modal extends Component {
         cancelLabel="Cerrar"
         confirmLabel="Compartir"
         isShown={modalVisibility}
+        onConfirm={this.handleConfirm}
         onCloseComplete={this.handleClose}
-        onConfirm={() => this.handleConfirm(selectedPremiere)}
         title={`${selectedPremiere.name} ${selectedPremiere.isPremiere ? '- Estreno' : ''}`}
       >
         <Tablist marginBottom={14} display="flex">
