@@ -23,7 +23,7 @@ class Modal extends Component {
   }
 
   toggleFooter = () => {
-    const hasFooter = navigator.hasOwnProperty('share') || navigator.hasOwnProperty('clipboard')
+    const hasFooter = 'share' in navigator || 'clipboard' in navigator
     this.setState({ hasFooter })
   }
 
