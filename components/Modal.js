@@ -9,26 +9,38 @@ import Trailer from './shared/Trailer'
 class Modal extends Component {
   state = {
     selectedIndex: 0,
+    hasFooter: false,
     tabs: ['Funciones', 'Descripción', 'Trailer'],
+  }
+
+  componentDidMount() {
+    this.toggleFooter()
+  }
+
+  componentDidUpdate(prevProps) {
+    const { modalVisibility } = this.props
+    if (modalVisibility !== prevProps.modalVisibility) this.setState({ selectedIndex: 0 })
+  }
+
+  toggleFooter = () => {
+    const hasFooter = navigator.hasOwnProperty('share') || navigator.hasOwnProperty('clipboard')
+    this.setState({ hasFooter })
   }
 
   handleSelectIndex = index => this.setState({ selectedIndex: index })
 
-  handleConfirm = () => {
+  handleConfirm = async () => {
     const { selectedPremiere } = this.props
 
     if (navigator.share) {
       navigator.share({
-        title: selectedPremiere.name,
         url: window.location.href,
+        title: selectedPremiere.name,
         text: selectedPremiere.description,
       })
-    } else {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          toaster.notify(`Link copiado al portapapeles`)
-        })
-      }
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(window.location.href)
+      toaster.notify(`Link copiado al portapapeles`)
     }
   }
 
@@ -37,13 +49,8 @@ class Modal extends Component {
     Router.push('/', '/', { shallow: true })
   }
 
-  componentDidUpdate(prevProps) {
-    const { modalVisibility } = this.props
-    if (modalVisibility !== prevProps.modalVisibility) this.setState({ selectedIndex: 0 })
-  }
-
   render() {
-    const { tabs, selectedIndex } = this.state
+    const { tabs, selectedIndex, hasFooter } = this.state
     const { modalVisibility, selectedPremiere, selectedPremiereShows } = this.props
 
     return (
@@ -51,6 +58,7 @@ class Modal extends Component {
         cancelLabel="Cerrar"
         confirmLabel="Compartir"
         isShown={modalVisibility}
+        hasFooter={hasFooter}
         onConfirm={this.handleConfirm}
         onCloseComplete={this.handleClose}
         title={`${selectedPremiere.name} ${selectedPremiere.isPremiere ? '- Estreno' : ''}`}
