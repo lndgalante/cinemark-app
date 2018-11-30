@@ -7,7 +7,7 @@
     "@brainhubeu/react-carousel": "^1.10.11",
     "@zeit/next-css": "^1.0.1",
     "env-hoc": "^1.2.7",
-    "evergreen-ui": "^4.7.1",
+    "evergreen-ui": "^4.8.0",
     "geolib": "^2.0.24",
     "lodash.debounce": "^4.0.8",
     "next": "^7.0.2",
@@ -15,14 +15,14 @@
     "node-fetch": "^2.3.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-ga": "2.5.3",
+    "react-ga": "2.5.6",
     "react-progressive-image": "^0.6.0",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.5",
+    "redux-devtools-extension": "^2.13.7",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "styled-components": "^4.1.1"
+    "styled-components": "^4.1.2"
   },
   "scripts": {
     "dev": "next",
@@ -30,6 +30,6 @@
     "start": "next start"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0"
+    "babel-plugin-styled-components": "^1.9.2"
   }
 }

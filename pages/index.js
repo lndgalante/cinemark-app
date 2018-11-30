@@ -6,7 +6,7 @@ import { orderByDistance } from 'geolib'
 import withEnv from 'env-hoc'
 import '@brainhubeu/react-carousel/lib/style.css'
 
-import Header from '../components/Header'
+import Navbar from '../components/Navbar'
 import Movies from '../containers/Movies'
 import Modal from '../containers/Modal'
 import Meta from '../components/Meta'
@@ -21,7 +21,7 @@ const Premieres = () => {
   return (
     <Fragment>
       <Meta />
-      <Header />
+      <Navbar />
       <Movies />
       <Modal />
     </Fragment>

@@ -4,7 +4,7 @@ import Select from '../containers/Select'
 import Tags from '../containers/Tags'
 import Search from '../containers/Search'
 
-const Wrapper = styled.header`
+const Wrapper = styled.nav`
   display: grid;
   grid-gap: 14px;
   grid-template-columns: 1fr auto;
@@ -51,7 +51,7 @@ const SubWrapper = styled.div`
   }
 `
 
-const Header = () => (
+const Navbar = () => (
   <Wrapper>
     <SubWrapper>
       <Select />
@@ -61,4 +61,4 @@ const Header = () => (
   </Wrapper>
 )
 
-export default Header
+export default Navbar
