@@ -15,7 +15,7 @@ import { toggleVisibility } from '../store/ducks/modal'
 import { setCinemas, setCinema } from '../store/ducks/select'
 import { setPremieres, setDefaultPremiere, setDefaultPremiereShows } from '../store/ducks/movies'
 
-import cinemas from '../static/cinemas'
+import cinemas from '../utils/cinemas'
 
 const Premieres = () => {
   return (
