@@ -26,7 +26,7 @@ const Movie = ({ movie, handleSelectMovie }) => (
       {(src, loading) => (loading ? <div style={getStyle(src)} /> : <Poster src={src} alt={movie.name} />)}
     </ProgressiveImage>
 
-    <Emojis>
+    <Emojis withPremiere={movie.isPremiere}>
       {movie.isPremiere && <Emoji>✨</Emoji>}
       <Emoji>{movie.emoji}</Emoji>
     </Emojis>
