@@ -6,9 +6,9 @@ import { orderByDistance } from 'geolib'
 import withEnv from 'env-hoc'
 import '@brainhubeu/react-carousel/lib/style.css'
 
-import Navbar from '../components/Navbar'
 import Movies from '../containers/Movies'
 import Modal from '../containers/Modal'
+import Navbar from '../components/Navbar'
 import Meta from '../components/Meta'
 
 import { toggleVisibility } from '../store/ducks/modal'

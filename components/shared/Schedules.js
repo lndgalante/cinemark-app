@@ -32,24 +32,22 @@ const Schedules = ({ shows }) => (
       <Table.TextCell>Horarios</Table.TextCell>
     </StyledHead>
     <Table.Body>
-      {shows.map(({ format, version, cinemas }) =>
-        cinemas.map(({ date, time, link }) => (
-          <Table.Row key={link} height="auto" paddingY={12} isSelectable onSelect={() => window.open(link)}>
-            <Table.TextCell flexBasis={52} flexShrink={0} flexGrow={0}>
-              <Avatar name={format.split('').join(' ')} isSolid size={28} />
-            </Table.TextCell>
-            <Table.TextCell className="date-cell">{date}</Table.TextCell>
-            <Table.TextCell flexBasis={90} flexShrink={0} flexGrow={0}>
-              {version}
-            </Table.TextCell>
-            <Table.TextCell isNumber>
-              <BadgeContainer>
-                <StyledBadge>{time}</StyledBadge>
-              </BadgeContainer>
-            </Table.TextCell>
-          </Table.Row>
-        ))
-      )}
+      {shows.map(({ format, version, date, time, link }) => (
+        <Table.Row key={link} height="auto" paddingY={12} isSelectable onSelect={() => window.open(link)}>
+          <Table.TextCell flexBasis={52} flexShrink={0} flexGrow={0}>
+            <Avatar name={format.split('').join(' ')} isSolid size={28} />
+          </Table.TextCell>
+          <Table.TextCell className="date-cell">{date}</Table.TextCell>
+          <Table.TextCell flexBasis={90} flexShrink={0} flexGrow={0}>
+            {version}
+          </Table.TextCell>
+          <Table.TextCell isNumber>
+            <BadgeContainer>
+              <StyledBadge>{time}</StyledBadge>
+            </BadgeContainer>
+          </Table.TextCell>
+        </Table.Row>
+      ))}
     </Table.Body>
   </Table>
 )
