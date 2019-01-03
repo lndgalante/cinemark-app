@@ -3,14 +3,14 @@ import Head from 'next/head'
 const Meta = () => (
   <Head>
     {/* General */}
-    <title>Cine Estrenos</title>
+    <title>Cinemark Estrenos</title>
     <meta charSet="UTF-8" />
-    <meta name="title" content="Cine Estrenos" />
+    <meta name="title" content="Cinemark Estrenos" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="description" content="Obtené todos los estrenos de Cinemark Hoyts" />
     <meta
       name="keywords"
-      content="estrenos,cine estrenos,cinemark,hoyts,cinemark hoyts,cinemark estrenos,cinemark hoyts estrenos,hoyts estrenos"
+      content="estrenos,cinemark estrenos,cinemark,hoyts,cinemark hoyts,cinemark estrenos,cinemark hoyts estrenos,hoyts estrenos"
     />
     <meta name="language" content="Spanish" />
     <meta name="robots" content="index, follow" />
@@ -36,7 +36,7 @@ const Meta = () => (
     {/* iOS Splash Screens */}
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="white" />
-    <meta name="apple-mobile-web-app-title" content="Cine Estrenos" />
+    <meta name="apple-mobile-web-app-title" content="Cinemark Estrenos" />
     <link rel="apple-touch-icon" sizes="72x72" href="./static/icons/icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="96x96" href="./static/icons/icon-96x96.png" />
     <link rel="apple-touch-icon" sizes="128x128" href="./static/icons/icon-128x128.png" />

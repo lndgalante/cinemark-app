@@ -74,7 +74,7 @@ const handleSelect = payload => {
 }
 
 const handleDeselect = () => {
-  document.title = 'Cine Estrenos'
+  document.title = 'Cinemark Estrenos'
   document.querySelector('.btn-select').click()
 
   return async dispatch => {
