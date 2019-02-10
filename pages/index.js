@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import fetch from 'node-fetch'
 import { orderByDistance } from 'geolib'
 import withEnv from 'env-hoc'
-import '@brainhubeu/react-carousel/lib/style.css'
 
 import Movies from '../containers/Movies'
 import Modal from '../containers/Modal'

@@ -10,42 +10,6 @@ const Reset = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    overflow: hidden;
-  }
-
-  /* Carousel */
-  .BrainhubCarousel {
-    width: 100%;
-    height: 300px;
-    position: relative;
-  }
-
-  @media screen and (min-width: 768px) {
-    .BrainhubCarousel:hover .handler {
-      opacity: 1;
-    }
-  }
-
-  .BrainhubCarousel {
-    transition: filter 300ms ease-in-out;
-  }
-
-  .BrainhubCarousel .BrainhubCarousel__trackContainer {
-    margin: 0 -3px;
-  }
-
-  .BrainhubCarousel__customArrows {
-    height: 100%;
-  }
-
-  /* Carousel Handlers */
-  svg[data-icon='chevron-left'],
-  svg[data-icon='chevron-right'] {
-    transform-origin: center;
-    transition: all 400ms ease-in-out 100ms;
-  }
-
   /* Modal styles */
   #panel-Funciones .📦wht-spc_nowrap  {
     white-space: normal !important;

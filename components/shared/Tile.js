@@ -6,9 +6,10 @@ const Tile = styled.article`
   cursor: pointer;
   transform-origin: center center;
   transition: all 400ms ease-in-out;
-  position: relative;
   border-radius: 3px;
   overflow: hidden;
+  position: relative;
+  margin: 0 8px 8px 0;
 
   @media screen and (min-width: 768px) {
     :hover {

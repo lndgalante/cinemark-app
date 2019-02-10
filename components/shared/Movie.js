@@ -11,7 +11,6 @@ const getStyle = src => {
   return {
     width: '200px',
     height: '300px',
-    filter: 'blur(10px)',
     backgroundImage: `url(${src})`,
     transition: 'filter 500ms ease',
   }
