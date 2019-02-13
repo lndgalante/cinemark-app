@@ -8,6 +8,7 @@ const Wrapper = styled.nav`
   display: grid;
   grid-gap: 14px;
   grid-template-columns: 1fr auto;
+  margin-top: 15px;
 
   @media screen and (max-width: 1024px) {
     grid-auto-flow: column;

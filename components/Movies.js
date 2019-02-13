@@ -6,13 +6,25 @@ import Slider from './shared/Slider'
 
 const MoviesContainer = styled.section`
   width: 100%;
-  height: 300px;
   margin-top: 14px;
   position: relative;
-  overflow: hidden;
+  display: grid;
+  grid-gap: 6px 4px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   @media screen and (max-width: 768px) {
     margin-top: 28px;
+    grid-template-rows: 300px;
+    grid-auto-flow: column;
+    scroll-snap-align: start;
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `
 
