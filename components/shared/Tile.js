@@ -9,7 +9,6 @@ const Tile = styled.article`
   border-radius: 3px;
   overflow: hidden;
   position: relative;
-  margin: 0 8px 8px 0;
 
   @media screen and (min-width: 768px) {
     :hover {

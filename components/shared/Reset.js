@@ -10,14 +10,14 @@ const Reset = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   /* Modal styles */
   #panel-Funciones .📦wht-spc_nowrap  {
     white-space: normal !important;
   }
-
-  /*.📦ml_16px[role='dialog'] {
-    padding-bottom: 14px;
-  } */
 
   @media screen and (max-width: 576px) {
     .📦ml_16px[role='dialog'] {
