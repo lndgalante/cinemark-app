@@ -15,6 +15,7 @@ import { setCinemas, setCinema } from '../store/ducks/select'
 import { setPremieres, setDefaultPremiere, setDefaultPremiereShows } from '../store/ducks/movies'
 
 import cinemas from '../utils/cinemas'
+import { baseURL } from '../utils'
 
 const Premieres = () => {
   return (
@@ -35,8 +36,8 @@ Premieres.getInitialProps = async ({ query, store, env }) => {
     try {
       const urls = [
         `http://ip-api.com/json/${ipAddress}`,
-        'https://cinemark-wrapper-api.now.sh/movies',
-        `https://cinemark-wrapper-api.now.sh/movie?movieId=${id}&cinemaId=${cinema}`,
+        `${baseURL}/movies`,
+        `${baseURL}/movie?movieId=${id}&cinemaId=${cinema}`,
       ]
       const [ip, premieres, premiere] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
 
@@ -53,10 +54,7 @@ Premieres.getInitialProps = async ({ query, store, env }) => {
       store.dispatch(setDefaultPremiereShows(premiere.shows))
       store.dispatch(toggleVisibility())
     } catch (error) {
-      const urls = [
-        'https://cinemark-wrapper-api.now.sh/movies',
-        `https://cinemark-wrapper-api.now.sh/movie?movieId=${id}&cinemaId=${cinema}`,
-      ]
+      const urls = ['${baseURL}/movies', `${baseURL}/movie?movieId=${id}&cinemaId=${cinema}`]
       const [premieres, premiere] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
       const selectedCinema = cinemas.find(({ cinemaId }) => String(cinemaId) === cinema)
       const selectedPremiere = premieres.find(({ movieId }) => movieId === id)
@@ -73,7 +71,7 @@ Premieres.getInitialProps = async ({ query, store, env }) => {
   }
 
   try {
-    const urls = [`http://ip-api.com/json/${ipAddress}`, 'https://cinemark-wrapper-api.now.sh/movies']
+    const urls = [`http://ip-api.com/json/${ipAddress}`, `${baseURL}/movies`]
     const [ip, premieres] = await Promise.all(urls.map(url => fetch(url).then(res => res.json())))
 
     const { lat, lon } = ip
@@ -83,7 +81,7 @@ Premieres.getInitialProps = async ({ query, store, env }) => {
     store.dispatch(setCinemas(cinemasOrderedByDistance))
     store.dispatch(setPremieres(premieres))
   } catch (error) {
-    const premieresRes = await fetch('https://cinemark-wrapper-api.now.sh/movies')
+    const premieresRes = await fetch(`${baseURL}/movies`)
     const premieres = await premieresRes.json()
 
     store.dispatch(setCinemas(cinemas))

@@ -1,3 +1,5 @@
+const baseURL = 'https://cinemark-wrapper-api-rapblokgqa.now.sh'
+
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const normalize = string =>
@@ -7,10 +9,10 @@ const normalize = string =>
     .toLowerCase()
 
 const getPremiereInfo = async (movieId, cinemaId) => {
-  const res = await fetch(`https://cinemark-wrapper-api.now.sh/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
+  const res = await fetch(`${baseURL}/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
   const data = await res.json()
 
   return data
 }
 
-export { sleep, normalize, getPremiereInfo }
+export { sleep, normalize, getPremiereInfo, baseURL }
