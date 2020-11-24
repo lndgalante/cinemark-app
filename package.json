@@ -12,6 +12,7 @@
     "next": "^8.0.3",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "node-fetch": "^2.3.0",
+    "query-string": "^6.13.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-ga": "2.5.7",

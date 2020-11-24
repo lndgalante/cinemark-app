@@ -1,36 +1,31 @@
 // Initial State
-const initialState = ''
+const initialState = '';
 
 // Action Types
 const types = {
   setLoading: 'SET_LOADING',
   setSuccess: 'SET_SUCCESS',
-}
+};
 
 // Reducer
 const statusReducer = (state = initialState, { type }) => {
   switch (type) {
     case types.setLoading: {
-      return 'loading'
+      return 'loading';
     }
 
     case types.setSuccess: {
-      return 'success'
+      return 'success';
     }
 
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
 // Action Creators
-const setStatusLoading = () => ({
-  type: types.setLoading,
-})
+const setStatusLoading = () => ({ type: types.setLoading });
+const setStatusSuccess = () => ({ type: types.setSuccess });
 
-const setStatusSuccess = () => ({
-  type: types.setSuccess,
-})
-
-export { statusReducer, setStatusLoading, setStatusSuccess }
+export { statusReducer, setStatusLoading, setStatusSuccess };

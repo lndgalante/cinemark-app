@@ -1,4 +1,4 @@
-import { SelectMenu, Button } from 'evergreen-ui'
+import { SelectMenu, Button } from 'evergreen-ui';
 
 const Select = ({ cinemas, selectedCinema, handleSelect, handleDeselect }) => (
   <SelectMenu
@@ -11,10 +11,10 @@ const Select = ({ cinemas, selectedCinema, handleSelect, handleDeselect }) => (
     onDeselect={handleDeselect}
     selected={selectedCinema.value}
   >
-    <Button height={40} appearance="primary" className="btn-select">
+    <Button height={40} appearance='primary' className='btn-select'>
       {selectedCinema.label || 'Elegir cine'}
     </Button>
   </SelectMenu>
-)
+);
 
-export default Select
+export default Select;

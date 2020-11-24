@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { Spinner } from 'evergreen-ui'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Spinner } from 'evergreen-ui';
 
-import Slider from './shared/Slider'
+import Slider from './shared/Slider';
 
 const MoviesContainer = styled.section`
   width: 100%;
@@ -26,7 +26,7 @@ const MoviesContainer = styled.section`
       display: none;
     }
   }
-`
+`;
 
 const SpinnerContainer = styled.div`
   z-index: 10;
@@ -38,11 +38,11 @@ const SpinnerContainer = styled.div`
   position: absolute;
   background-color: white;
   border: 4px solid white;
-`
+`;
 
 class Movies extends Component {
   render() {
-    const { status, movies, setPremiere } = this.props
+    const { status, movies, setPremiere } = this.props;
 
     return (
       <MoviesContainer>
@@ -53,8 +53,8 @@ class Movies extends Component {
         )}
         <Slider movies={movies} handleSelectMovie={setPremiere} />
       </MoviesContainer>
-    )
+    );
   }
 }
 
-export default Movies
+export default Movies;

@@ -1,20 +1,23 @@
-import React from 'react'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { Provider } from 'react-redux';
 
-import App, { Container } from 'next/app'
-import withRedux from 'next-redux-wrapper'
+import App, { Container } from 'next/app';
+import withRedux from 'next-redux-wrapper';
 
-import Layout from '../components/Layout'
-import makeStore from '../store'
+// components
+import Layout from '../components/Layout';
+
+// store
+import makeStore from '../store';
 
 class NextApp extends App {
   static async getInitialProps({ Component, ctx }) {
-    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
-    return { pageProps }
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+    return { pageProps };
   }
 
   render() {
-    const { Component, pageProps, store } = this.props
+    const { Component, pageProps, store } = this.props;
 
     return (
       <Container>
@@ -24,8 +27,8 @@ class NextApp extends App {
           </Layout>
         </Provider>
       </Container>
-    )
+    );
   }
 }
 
-export default withRedux(makeStore)(NextApp)
+export default withRedux(makeStore)(NextApp);

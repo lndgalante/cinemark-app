@@ -329,6 +329,6 @@ const cinemas = [
       { tag: '6 Salas | 2D, 3D, XD y DBOX', link: 'https://www.cinemarkhoyts.com.ar/formatos' },
     ],
   },
-]
+];
 
-export default cinemas
+export default cinemas;

@@ -1,19 +1,19 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import Select from '../components/Select'
-import { handleSelect, handleDeselect } from '../store/ducks/select'
+// components
+import Select from '../components/Select';
+
+// store
+import { handleSelect, handleDeselect } from '../store/ducks/select';
 
 const mapStateToProps = ({ select }) => ({
   cinemas: select.cinemas,
   selectedCinema: select.selectedCinema,
-})
+});
 
 const mapDispatchToProps = {
   handleSelect,
   handleDeselect,
-}
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Select)
+export default connect(mapStateToProps, mapDispatchToProps)(Select);

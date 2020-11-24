@@ -1,4 +1,7 @@
-import { Pane, Paragraph, Strong, Text } from 'evergreen-ui'
+import { Pane, Paragraph, Strong, Text } from 'evergreen-ui';
+
+// utils
+import cinemas from '../../utils/cinemas';
 
 const Description = ({ movie }) => (
   <Pane paddingX={14} paddingY={12}>
@@ -36,6 +39,6 @@ const Description = ({ movie }) => (
       <Text> {movie.cast.actors.join(', ')}</Text>
     </Paragraph>
   </Pane>
-)
+);
 
-export default Description
+export default Description;

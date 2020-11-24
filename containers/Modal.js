@@ -1,19 +1,19 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import Modal from '../components/Modal'
-import { toggleVisibility } from '../store/ducks/modal'
+// components
+import Modal from '../components/Modal';
 
-const mapStateToProps = state => ({
+// store
+import { toggleVisibility } from '../store/ducks/modal';
+
+const mapStateToProps = (state) => ({
   modalVisibility: state.modalVisibility,
   selectedPremiere: state.movies.selectedPremiere,
   selectedPremiereShows: state.movies.selectedPremiereShows,
-})
+});
 
 const mapDispatchToProps = {
   toggleVisibility,
-}
+};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Modal)
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

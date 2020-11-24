@@ -1,18 +1,23 @@
-const baseURL = 'https://cinemark-wrapper-api-rapblokgqa.now.sh'
+import queryString from 'query-string';
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const baseURL = 'https://cinemark-api-wrapper.vercel.app';
 
-const normalize = string =>
-  string
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+const normalize = (string) => {
+  return string
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
+    .toLowerCase();
+};
 
 const getPremiereInfo = async (movieId, cinemaId) => {
-  const res = await fetch(`${baseURL}/movie?movieId=${movieId}&cinemaId=${cinemaId}`)
-  const data = await res.json()
+  const res = await fetch(`${baseURL}/movie?${queryString.stringify({ movieId, cinemaId })}`);
+  const data = await res.json();
 
-  return data
-}
+  return data;
+};
 
-export { sleep, normalize, getPremiereInfo, baseURL }
+export { sleep, normalize, getPremiereInfo, baseURL };

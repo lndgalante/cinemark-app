@@ -1,5 +1,5 @@
-import { Tab } from 'evergreen-ui'
-import styled from 'styled-components'
+import { Tab } from 'evergreen-ui';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: grid;
@@ -16,20 +16,20 @@ const Wrapper = styled.div`
     max-width: 1280px;
     padding: 0 21px;
   }
-`
+`;
 
 const Tags = ({ tags }) => {
-  if (!tags) return null
+  if (!tags) return null;
 
   return (
-    <Wrapper className="tags">
+    <Wrapper className='tags'>
       {tags.map(({ tag, link }) => (
-        <Tab key={tag} isSelected height={40} is="a" href={link} target="_blank">
+        <Tab key={tag} isSelected height={40} is='a' href={link} target='_blank'>
           <span>{tag}</span>
         </Tab>
       ))}
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Tags
+export default Tags;

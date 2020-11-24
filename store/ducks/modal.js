@@ -1,28 +1,25 @@
 // Initial State
-const initialState = false
+const initialState = false;
 
 // Action Types
 const types = {
   toggleVisibility: 'TOGGLE_VISIBILITY',
-}
+};
 
 // Reducer
 const modalReducer = (state = initialState, { type }) => {
   switch (type) {
     case types.toggleVisibility: {
-      return !state
+      return !state;
     }
 
     default: {
-      return state
+      return state;
     }
   }
-}
+};
 
 // Action Creators
-const toggleVisibility = payload => ({
-  type: types.toggleVisibility,
-  payload,
-})
+const toggleVisibility = (payload) => ({ type: types.toggleVisibility, payload });
 
-export { modalReducer, toggleVisibility }
+export { modalReducer, toggleVisibility };

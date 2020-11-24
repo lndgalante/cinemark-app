@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import ReactGA from 'react-ga'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
-import Reset from './shared/Reset'
+import Reset from './shared/Reset';
 
 const Wrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
-`
+`;
 
 const Main = styled.main`
   width: 100%;
@@ -23,21 +23,21 @@ const Main = styled.main`
     padding-top: 14px;
     justify-content: flex-start;
   }
-`
+`;
 
 const Title = styled.h1`
   display: none;
-`
+`;
 
 class Layout extends Component {
   componentDidMount() {
-    ReactGA.initialize('UA-128371929-1')
-    ReactGA.pageview(window.location.pathname)
-    document.querySelector('.btn-select').removeAttribute('role')
+    ReactGA.initialize('UA-128371929-1');
+    ReactGA.pageview(window.location.pathname);
+    document.querySelector('.btn-select').removeAttribute('role');
   }
 
   render() {
-    const { children } = this.props
+    const { children } = this.props;
 
     return (
       <Wrapper>
@@ -47,8 +47,8 @@ class Layout extends Component {
         </Main>
         <Reset />
       </Wrapper>
-    )
+    );
   }
 }
 
-export default Layout
+export default Layout;

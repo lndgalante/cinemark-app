@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Overlay = styled.div`
   position: absolute;
@@ -13,6 +13,9 @@ const Overlay = styled.div`
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: inherit;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 
-export default Overlay
+export default Overlay;
